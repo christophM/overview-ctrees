@@ -1,0 +1,75 @@
+% setting spaces for the margins
+\usepackage[left=3.5cm,right=2cm,top=2cm,bottom=2cm,includeheadfoot]{geometry}
+% for the bibliography
+\usepackage[round]{natbib}
+% for citing urls
+%\usepackage{url}
+% for the flow diagram
+\usepackage{tikz}
+\usetikzlibrary{shapes}
+\usepackage[ansinew]{inputenc}
+% replaced ngerman with english
+\usepackage[english]{babel} 
+\usepackage{graphicx}
+% for direct positioning of pics
+\usepackage{float}
+\usepackage{url}
+\definecolor{RoyalBlue}{HTML}{4169E1}
+% let one color the hyperrefs in the document
+\usepackage[colorlinks, linkcolor=black, urlcolor=RoyalBlue, citecolor=RoyalBlue, linktoc=section]{hyperref}
+\usepackage{amssymb,amsmath}
+% for the LMU Logo 
+\usepackage{transparent}
+% for the distance between rows
+\usepackage{setspace}
+\onehalfspacing
+% for fancy descriptions
+\usepackage{enumitem}
+% for fancy header
+%\usepackage{fancyhdr}
+%\setlength{\headheight}{15.2pt}
+%\pagestyle{fancy}
+%\fancyhf{}
+% \usepackage[automark]{scrpage2}
+\usepackage{listings,relsize}
+\usepackage{textcomp}
+\lstloadlanguages{R}
+\lstdefinelanguage{Renhanced}[]{R}{%
+  morekeywords={acf,ar,arima,arima.sim,colMeans,colSums,is.na,is.null,%
+    mapply,ms,na.rm,nlmin,replicate,row.names,rowMeans,rowSums,seasonal,%
+    sys.time,system.time,ts.plot,which.max,which.min, quartz, pdf},
+  deletekeywords={c},
+  alsoletter={.\%},%
+  alsoother={:_\$}}
+\lstset{
+  language=R,
+  extendedchars=true,
+  %basicstyle=\small\ttfamily,
+  basicstyle=\ttfamily,
+  commentstyle=\textsl,
+  %keywordstyle=\mdseries,
+  keywordstyle=\color{black},
+  showstringspaces=false,
+  index=[1][keywords], 
+  upquote=true, 
+  indexstyle=\indexfonction,
+  commentstyle=\color[rgb]{0.133,0.545,0.133},
+  stringstyle=\color[rgb]{0.627,0.126,0.941},
+  literate={~} {$\sim$}{1},
+  breaklines=true
+}
+\newcommand{\indexfonction}[1]{\index{#1@\texttt{#1}}}
+\title{Conditional trees}
+\author{Christoph Molnar}
+
+% changes the graphics path to ./plots
+\graphicspath{{./plots/}}
+
+\newcommand{\emptypage}{%
+  \newpage
+  \thispagestyle{empty}
+  \section*{}
+  \newpage
+  }
+
+\newcommand{\R}[1]{\lstinline{#1}}

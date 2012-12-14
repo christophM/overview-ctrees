@@ -1,0 +1,19 @@
+Entscheidungsbäume, wie sie aus der Medizin oder Biologie bekannt sind
+können zur Erklärung von Zusammenhangsstrukturen in Daten verwendet
+werden. Das funktioniert sowohl für kategoriale Zielvariablen
+(Klassifizierungsbäume) als auch für numerische Zielgrößen
+(Regressionsbäume). Bäume teilen den Merkmalsraum X, der die Zielgröße
+y erklären soll in Partitionen auf. Die Partitionen werden so gewählt,
+dass die Teilmengen innerhalb der Partitionen möglischt homogen
+bezüglich der Zielgöße y sind und möglichst heterogen zu anderen
+Partitionen. Bei dem CART-Ansatz werden die Merkmale binär
+gesplittet. Außerdem ist der Algorithmus rekursiv definiert, so dass
+bereits für einen Split benutze Variablen auch bei einem späteren
+Split wiederverwendet werden könnten. [REF]
+CART arbeitet wie folgt: 
+Der Merkmalsraum wird rekursiv binär partitioniert und anschließend
+wird in den neu entstandenen Partitionen ein konstantes Modell
+angepasst. Welche Variable aus dem Merkmalsraum für den Split
+verwendet wird, wird durch ein Kriterium entschieden. Dafür wird ein
+Informationskriterium verwendet. 
+

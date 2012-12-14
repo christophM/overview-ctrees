@@ -1,0 +1,28 @@
+Regressions- und Klassifizierungsbäume (CART) ist ein wichtiges
+Werkzeug bei der Datenanalyse. Aufgrund der intuitiven Struktur der
+Aufteilung des Variablenraumes und der damit verbundenen guten
+Interpretierbarkeit erfreuen sie sich einer gewissen Beliebtheit.
+Klassische CART's leiden jedoch unter zwei Problemen: Zum einen neigen
+sie zur Überanpassung an die Daten. Zum anderen ist die
+Variablenselektion verzerrt zu gunsten von Variablen mit vielen
+Splitmöglichkeiten.  Das Problem der Überanpassung lässt sich sich
+Lösen, indem Entscheidungsbäume beschnitten werden (Pruning), oder gar
+nicht erst voll entwickelt werden, sondern mit Hilfe eines
+Stop-Kriteriums nicht weiter wachsen.
+
+Diese Arbeit stellt ein Framework vor, bei dem jeder Split-Schritt
+des Algorithmuses für das Wachsen des Entscheidungsbaumes durch
+statistische Hypothesentests geprüft wird, durch welche Variable der Split
+erfolgen soll und wann der Baum nicht mehr weiter wächst. Die
+Hypothesentests sind eingebettet in die Theorie der
+Permutationstests mit bedingter Inferenz. Die Testentscheidung wird bedingt auf die
+Verteilung aller Permutationen der jeweiligen Teststatistik. 
+
+Der in dieser Arbeit vorgestellte Ansatz soll beide genannten Probleme
+lösen: Die Überanpassung an die Daten wird verhindert durch multiples
+Testen der globalen Nullhypothese, ob noch eine weiter Splitvariable
+verwendet werden soll, oder abgebrochen werden soll. 
+Die Verzerrung in der Variablenselektion wird vermieden durch ein
+Vergleichen der Variablen auf p-Wert Ebene. 
+
+Die bedingten Regressionsbäume werden an Beispielen demonstriert. 

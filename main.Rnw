@@ -1,0 +1,58 @@
+\documentclass[
+  bibliography=totoc,
+  listof=totoc,BCOR5mm,
+  DIV12, 
+  headsepline, 
+  headings=openany, 
+  twoside, 
+  a4paper,
+  openright]{scrbook}
+
+
+\input{input/prelude.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+<<setup, include=FALSE>>=
+## Highligting for inline R-code
+knit_hooks$set(inline = function(x) {
+  if (is.numeric(x)) return(knitr:::format_sci(x, 'latex'))
+  x = as.character(x)
+  knitr:::hilight_source(x, 'latex', list(prompt=FALSE, size='normalsize'))
+})
+## Setting some options
+opts_knit$set(child.path = "./input/", progress = FALSE)
+
+@
+\SweaveOpts{concordance=TRUE}
+% ---------------------------------------------------------------
+\frontmatter 
+\include{input/title} 
+\tableofcontents 
+% ---------------------------------------------------------------
+\mainmatter 
+
+
+
+
+
+\chapter{Introduction}
+\chapter{Algorithm}
+<<best-split, child = "best-split.Rnw">>=
+@ 
+
+
+\begin{appendix}
+  \chapter{Computational details}
+  \chapter{Digital Appendix}
+\end{appendix}
+
+\backmatter % ab hier keine Nummerierung mehr
+   % \listoffigures % Abbildungsverzeichnis 
+\bibliographystyle{plainnat}
+       \nocite{*}
+  \newpage
+  \listoffigures
+\end{document}
+

@@ -1,0 +1,8 @@
+# ignore latex overhead
+*.aux
+*.toc
+*.lof
+*.log
+
+# ignore temporary files
+*~
