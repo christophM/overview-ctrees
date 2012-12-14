@@ -42,6 +42,9 @@ opts_knit$set(child.path = "./input/", progress = FALSE)
 <<best-split, child = "best-split.Rnw">>=
 @ 
 
+\chapter{Example bodyfat}
+<<best-split-regression, child = "best-split-regression.Rnw">>=
+@ 
 
 \begin{appendix}
   \chapter{Computational details}
