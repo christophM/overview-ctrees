@@ -52,6 +52,7 @@ opts_knit$set(child.path = "./input/", progress = FALSE)
    % \listoffigures % Abbildungsverzeichnis 
 \bibliographystyle{plainnat}
        \nocite{*}
+       \bibliography{input/bibliolog}
   \newpage
   \listoffigures
 \end{document}
