@@ -9,7 +9,7 @@ The formula is: \[T_{j}^A(L_n, w) = vec \left( \sum\limits_{i=1}^n w_i I(X_{ji} 
 The difference to the test statistic for the association test is the transformation of $X$. We only look at the different partitions of 
 $X$. Therefore the scale of $X$ is not of any interest anymore, but the partition which emerges by a certain split point. 
 An appropriate function to capture only the difference in the partition, the transformation of $X$ is the indicator function. It is defined as: 
-\(I(X_{ji} \in A) = \begin{cases} 1, & if X_{ij} \in A \\ 0 & X_{ij} \not\in A \end{cases}\),  where $A$ is one possible partition. 
+\(I(X_{ji} \in A) = \begin{cases} 1, & X_{ij} \in A \\ 0 & X_{ij} \not\in A \end{cases}\),  where $A$ is one possible partition. 
 This results in the statistic 
 \[c_{max}(\mathbf{t}, \mu, \Sigma) = max_{k} \left| \frac{(\mathbf{t}^A-\mu)_k}{\sqrt{(\Sigma)_{kk}}}\right|\]
 For regression and the identitiy function for the influence function $h$, the test statistic is the following: 
