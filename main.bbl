@@ -1,0 +1,25 @@
+\begin{thebibliography}{3}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Friedman et~al.(2001)Friedman, Hastie, and
+  Tibshirani]{friedman2001elements}
+J.~Friedman, T.~Hastie, and R.~Tibshirani.
+\newblock \emph{The elements of statistical learning}, volume~1.
+\newblock Springer Series in Statistics, 2001.
+
+\bibitem[Hothorn et~al.(2006)Hothorn, Hornik, and Zeileis]{hothorn2006unbiased}
+T.~Hothorn, K.~Hornik, and A.~Zeileis.
+\newblock Unbiased recursive partitioning: A conditional inference framework.
+\newblock \emph{Journal of Computational and Graphical Statistics}, 15\penalty0
+  (3):\penalty0 651--674, 2006.
+
+\bibitem[Strasser and Weber(1999)]{strasser1999asymptotic}
+H.~Strasser and C.~Weber.
+\newblock On the asymptotic theory of permutation statistics.
+\newblock 1999.
+
+\end{thebibliography}
