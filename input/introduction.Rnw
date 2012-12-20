@@ -1,5 +1,5 @@
-Recursive partitioning are a powerful yet simple tool in predictive/explanatory statistics. 
-Models build by partitioning take on the form of decision trees, which makes the approach easy to understand for everyone without understanding the algorithm behind. The model always takes on the form
+Recursive partitioning is a powerful yet simple tool in predictive and explanatory statistics. 
+Models build by partitioning take on the form of decision trees, which makes the approach easy to understand for everyone without understanding the algorithm behind. The model partitiones the data to reconstruct the relationship
 \[Y = f(X) \], 
 where $Y$ is called the response variable, which depends on a function $f$ of the covariates matrix $X$. 
 Partitioning can be done with many different approaches and therefore the landscape of algorithms is very vivid. 
@@ -14,7 +14,7 @@ Recursive partitioning suffers from different problems, some of which are alread
 \end{itemize}
 
 Most approaches suffers at least of one of those problems. 
-CART (Classification And Regression Trees) is a famous and widely used example of tree algorithms. 
+CART (Classification And Regression Trees) is a famous and widely used example of partitioning algorithms. 
 Let us take a closer look at the problems with CART as example and how the conditional trees approach solves them. 
 
 If a tree is allowed to grow full length, pathological split could happen and if the covariate space is large enough we 
@@ -24,5 +24,12 @@ Therefore trees (also CART) are sensitive to variance in the data and resulting 
 
 Exhaustive search procedures as used by the CART algorithm tend to choose variables with more possible split points (\textbf{variable selection bias}).  This is a problem of multiple comparison. Covariates with many possible splits are searched more often for the best split.  \\ \\
 
-The next split is just a heuristic, as the algorithm only searches for the next best split (like CART). Conditional trees algorithm measures the association and uses the covariate with the strongest association with the response variable. The algorithm is embeded in a well-defined framework of hypothesis.
+The next split is just a heuristic, as the algorithm only searches for the next best split (like CART). Conditional trees algorithm measures the association and uses the covariate with the strongest association with the response variable. The algorithm is embeded in a well-defined framework of hypothesis. \\ \\
+
+In the family of partitioning algorithm, the CART algorithm is one of the more powerful ones, as it can do regression as well as classification. Many other algorithm are restricted to one of the both tasks. Though, CART still lacks support for other scales of $X$ and $Y$. Examples are: ordinal regression and censored data, just to name two.  \\ \\
+
+To achieve the above goals, the conditional tree algorithm embeds all decisions into statistical hypothesis tests. The tests are based on conditional inference, i.e. permutation tests. The test statistic used is based on the work of [STRASSER AND WEBER]. 
+
+
+
 
