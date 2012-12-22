@@ -40,6 +40,10 @@ opts_knit$set(child.path = "./input/", progress = FALSE)
 \chapter{Introduction}
 <<introduction, child = "introduction.Rnw">>=
 @ 
+\chapter{Motivation}
+<<problems, child = "motivation.Rnw">>=
+@ 
+
 \chapter{Algorithm}
 <<best-split, child = "best-split.Rnw">>=
 @ 

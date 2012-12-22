@@ -1,8 +1,4 @@
-Recursive partitioning is a powerful yet simple tool in predictive and explanatory statistics. 
-Models build by partitioning take on the form of decision trees, which makes the approach easy to understand for everyone without understanding the algorithm behind. The model partitiones the data to reconstruct the relationship
-\[Y = f(X) \], 
-where $Y$ is called the response variable, which depends on a function $f$ of the covariates matrix $X$. 
-Partitioning can be done with many different approaches and therefore the landscape of algorithms is very vivid. 
+
 Recursive partitioning suffers from different problems, some of which are already solved by some approaches: 
 
 \begin{itemize}
