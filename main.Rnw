@@ -45,6 +45,8 @@ opts_knit$set(child.path = "./input/", progress = FALSE)
 @ 
 
 \chapter{Algorithm}
+<<algorithm, child = "algorithm.Rnw">>=
+@ 
 <<best-split, child = "best-split.Rnw">>=
 @ 
 

@@ -1,0 +1,30 @@
+All decisions are embedded into hypothesis tests. 
+The conditional trees algorithm uses permutation tests to test the hypothesis of independence between a covariate and the response. 
+This will be described further in the single steps of the algorithm. 
+
+The algorithm: \\
+Permutation test related steps are written in red.  \\
+
+\begin{enumerate}
+\item \textbf{Stop criterion} \\
+\begin{itemize}
+\item  Test global null hypothesis $H_0$ of independence between $Y$ and all $X_j$  
+  with \\ $H_0 = \cap_{j=1}^m H_0^j$ and $H_0^j: D(\mathbf{Y}| X_j) = D(\mathbf{Y})$ \color{red} (permutation tests for each $X_j$) \color{black} \\
+\item If $H_0$ not rejected \color{red} (no significance for all \(X_j\)) \color{black} $\Rightarrow$ Stop
+\end{itemize}
+
+\item \textbf{Variable selection} \\
+  Select covariate $X_{j*}$ with strongest association \color{red} (smallest p-value) \color{black}
+\item \textbf{Best split point search}  \\
+  Search best split for $X_{j*}$ \color{red} (max. test statistic c) \color{black} and partition data
+\item \textbf{Repeat}  \\
+  Repeat steps 1.), 2.) and 3.) for both of the new partitions
+\end{enumerate}
+
+The algorithm starts with the whole data set and tests if it should be splitted. If the answer is positive the variable with the strongest
+association with the response is chosen and the data set will be split into two partitions. The steps will be repeated within both
+of the new partitions. Covariates chosen for a split can be chosen again later (only in the case of a bivariate covariate it doesn't make sense). 
+First if in all partitions the global null hypothesis of independence cannot be rejected (Stop criterion) the tree does not grow any
+further and the algorithm stops. 
+
+The next Sections describe in detail how the single steps work and especially how permutation tests are applied. 

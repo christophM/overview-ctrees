@@ -3,6 +3,8 @@
 *.toc
 *.lof
 *.log
+*.tex
+*.out
 
 # ignore temporary files
 *~
