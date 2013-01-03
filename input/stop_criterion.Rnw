@@ -4,12 +4,8 @@ $H_0:=$ The response $Y$ is independent from all covariates $X_j, \quad j \in 1,
 The hypothesis is a joint hypothesis:  \\
 $H_0 = \cap_{j=1}^m H_0^j$ and $H_0^j: D(\mathbf{Y}| X_j) = D(\mathbf{Y})$ \\
 Each hypothesis $H_0^j$ is tested seperatly. Most simple approach would be to look at the $m$ resulting p-values 
-and to rejected the global null hypothesis of independence if one the p-values exceeds the predetermined significance level $\alpha$ (e.g. $\alpha = 0.05$). Though multiple comparison has to be considered and any multiple testing procedure can be used at this part of the algorithm to determine the if $H_0$ can be rejected. \\ \\
-[TESTSTATISTIC] \\
-[MU AND SIGMA OF TESTSTATISTIC] \\
-[STANDARDIZED TESTSTATISTIC] \\
-[CONVERGENCE BLA FROM STRASSER PAPER??] \\
-[SHORT ABOUT PERMUTATION TESTS] \\
-[RESULT P-VALUE] \\ \\
-[AGAIN HYPOTHESIS, REJECTED - NOT REJECTED] \\
-[VARIABLE SELECTION] \\
+and to rejected the global null hypothesis of independence if one the p-values exceeds the predetermined significance level $\alpha$ (e.g. $\alpha = 0.05$). Though multiple comparison has to be considered and any multiple testing procedure can be used at this part of the algorithm to determine t
+he if $H_0$ can be rejected. \\ \\
+RESULT P-VALUE \\ \\
+AGAIN HYPOTHESIS, REJECTED - NOT REJECTED \\
+VARIABLE SELECTION \\

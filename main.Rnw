@@ -47,12 +47,22 @@ opts_knit$set(child.path = "./input/", progress = FALSE)
 \chapter{Algorithm}
 <<algorithm, child = "algorithm.Rnw">>=
 @ 
+\section{The test statistic}
+<<test_statistic, child = "test-statistic">>=
+@ 
+\section{Stop criteria (1) and variable selection (2)}
+<<stop_criterion, child = "stop_criterion.Rnw">>=
+@ 
+\section{Splitting criteria (3)}
 <<best-split, child = "best-split.Rnw">>=
 @ 
+\section{Repeat(4)}
+[Is repeated; choice of alpha;]
 
 \chapter{Example bodyfat}
 <<best-split-regression, child = "best-split-regression.Rnw">>=
 @ 
+\chapter{Example glaucoma}
 
 \begin{appendix}
   \chapter{Computational details}
