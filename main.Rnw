@@ -48,7 +48,7 @@ opts_knit$set(child.path = "./input/", progress = FALSE)
 <<algorithm, child = "algorithm.Rnw">>=
 @ 
 \section{The test statistic}
-<<test_statistic, child = "test-statistic">>=
+<<test_statistic, child = "test-statistic.Rnw">>=
 @ 
 \section{Stop criteria (1) and variable selection (2)}
 <<stop_criterion, child = "stop_criterion.Rnw">>=
@@ -59,10 +59,14 @@ opts_knit$set(child.path = "./input/", progress = FALSE)
 \section{Repeat(4)}
 [Is repeated; choice of alpha;]
 
-\chapter{Example bodyfat}
+\chapter{Continuous Regression: Example bodyfat}
+<<glaucoma, child = "bodyfat.Rnw">>=
+@ 
 <<best-split-regression, child = "best-split-regression.Rnw">>=
 @ 
-\chapter{Example glaucoma}
+\chapter{Classification: Example glaucoma}
+
+\chapter{Other scales}
 
 \begin{appendix}
   \chapter{Computational details}
