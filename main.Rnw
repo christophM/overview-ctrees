@@ -60,7 +60,7 @@ opts_knit$set(child.path = "./input/", progress = FALSE)
 [Is repeated; choice of alpha;]
 
 \chapter{Continuous Regression: Example bodyfat}
-<<glaucoma, child = "bodyfat.Rnw">>=
+<<bodyfat, child = "bodyfat.Rnw">>=
 @ 
 <<best-split-regression, child = "best-split-regression.Rnw">>=
 @ 

@@ -46,4 +46,34 @@ approximate the distribution of the test statistic for the sample. If the correl
 very extreme compared to the permutated test statistics, the p-value will be very low. \\
 The procedure of calculating the test statistic for the original data and the permutations is done for every 
 covariate $X_j, \quad j \in 1, \dots, m$ seperatly. \\ \\
-EXAMPLE FIRST SPLIT? R-CODE
+
+\subsection*{R-Code}
+The data set for the example is available in the mboost LINK package. 
+In addition to the response DEXfat it contains the nine body measurements. 
+<<bodyfat-data>>=
+data(bodyfat, package = "mboost")
+head(bodyfat)
+@ 
+
+The conditional tree algorithm is implemented in the party package LINK, which is available on CRAN LINK. 
+The usage is similiar to the \lstinline{lm()}-function, with the formula interface. 
+The formula \lstinline{DEXfat ~ . } means that the tree should modell the response DEXfat (bodyfat measurement) 
+depending on all available covariates. 
+<<bodyfat-cond-model, message = FALSE>>=
+library("party")
+## fit a conditional tree
+cond_tree <- ctree(DEXfat ~ ., data = bodyfat)
+@
+The result is a tree with six terminal nodes (five splits). The variable chosen for the first split is \lstinline{hipcirc}, the circumference of the hip in cm. If it is bigger than 108cm the next measurement to look at is the breadth of the knee (\lstinline{kneebreadth}). If the breadth is smaller than 10.6 cm the estimated is 39.7, which is equal to the mean in this terminal node. 
+<<bodyfat-plot-ctree, out.width = "12cm", out.extra = "trim = 3cm 0cm 0cm 1cm", fig.width = 14, fig.height = 8, cache = FALSE>>=
+plot(cond_tree)
+@ 
+
+The CART algorithm gives us a different tree. 
+
+<<bodyfat-rpart, out.extra  = "trim = 0cm 4cm 0cm 4cm", cache = FALSE, fig.width = 14, fig.height = 8, cache = FALSE>>=
+library("rpart")
+library("partykit")
+cart <- rpart(DEXfat ~ ., data = bodyfat)
+plot(as.party(cart))
+@
