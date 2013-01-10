@@ -9,6 +9,6 @@
 
 # ignore figure folder
 ./figure/*
-
+./figure
 # ignore temporary files
 *~

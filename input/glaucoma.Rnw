@@ -27,18 +27,41 @@ with mean and variance: \\
 %% mean 
 \[\mu_j = \sum\limits_{i:node} X_{ji} \frac{1}{n_{node}} \begin{pmatrix} n_{Glaucoma} \\ n_{normal} \end{pmatrix}^T  = \begin{pmatrix} n_{Glaucoma} \cdot \bar{X}_{j, node} \\ n_{normal} \cdot \bar{X}_{j, node} \end{pmatrix} \]
 %% variance
-\[\Sigma = \frac{n_{node}}{n_{node} - 1} V(h) \cdot \sum\limits_{i:node} X_{ji}^2 - \frac{1}{n_{node} - 1} \left(\sum\limits_{i:node} X_{ij}\right) \left(\sum\limits_{i:node} X_{ij}\right)  \]
-\[V(h) = \frac{1}{n_{node}} \sum\limits_{i:node} 
+\[\Sigma = 
+\frac{n_{node}}{n_{node} - 1} V(h) \cdot \sum\limits_{i:node} X_{ji}^2 - \frac{1}{n_{node} - 1} \left(\sum\limits_{i:node} X_{ij}\right) \left(\sum\limits_{i:node} X_{ij}\right)   = 
+\frac{1}{n_{node} - 1} V(h) n_{node} \sum\limits_{i:node} \left(X_{ji} - \bar{X}_{j, node}\right)^2\]
+
+\begin{align*}
+V(h) & = \frac{1}{n_{node}} \sum\limits_{i:node} 
+\left(e_J (Y_i) -  \begin{pmatrix} \frac{n_G}{n_{node}} \\ \frac{n_N}{n_{node}} \end{pmatrix} \right)
+\left(e_J (Y_i) -  \begin{pmatrix} \frac{n_G}{n_{node}} \\ \frac{n_N}{n_{node}} \end{pmatrix} \right)^T
+\\ & = 
+\frac{1}{n_{node}} \sum\limits_{i:node} 
 \begin{pmatrix} Y_G - \frac{n_G}{n_{node}} \\ Y_N - \frac{n_N}{n_{node}} \end{pmatrix} 
-\begin{pmatrix} Y_G - \frac{n_G}{n_{node}} \\ Y_N - \frac{n_N}{n_{node}} \end{pmatrix}^T =
+\begin{pmatrix} Y_G - \frac{n_G}{n_{node}} \\ Y_N - \frac{n_N}{n_{node}} \end{pmatrix}^T 
+\\ & = 
+\frac{1}{n_{node}} \sum\limits_{i:node} 
+\begin{pmatrix} Y_G - \bar{Y}_G \\ Y_N - \bar{Y}_N \end{pmatrix} 
+\begin{pmatrix} Y_G - \bar{Y}_G \\ Y_N - \bar{Y}_N \end{pmatrix}^T 
+\\ & = 
 \frac{1}{n_{node}}
 \begin{pmatrix} 
-(Y_G - \frac{n_G}{n_{node}})^2 & \dots \\
-\dots  & (Y_N - \frac{n_N}{n_{node}} \\
-\end{pmatrix}
-
+(Y_G - \bar{Y}_G)^2 & (Y_G - \bar{Y}_G)(Y_N - \bar{Y}_N) \\
+(Y_G - \bar{Y}_G)(Y_N - \bar{Y}_N)  & (Y_N - \bar{Y}_N)^2 \\
+\end{pmatrix} 
+\\
+\end{align*}
+Thus: 
+\[(\Sigma)_{kk} = \frac{1}{n_{node} - 1} \sum\limits_{i:node} (Y_{Class} - \bar{Y}_{Class})^2 \sum\limits_{i:node} (X_{ji} - \bar{X}_{ji})^2 \quad \text{Class} \in \{G, N\}\]
+\[(\Sigma)_{kk} = n_{node} 
+\underbrace {\bar{Y}_{Class} (1 - \bar{Y}_{class}) \frac{1}{n_{node}}}_{\widehat{Var}(Y_{Class, node})}
+\underbrace {\sum\limits_{i:node} \left( X_{ji} - \bar{X}_{j, node} \right)^2}_{\widehat{Var}(X_{j, node})}
+\]
 The test statistic is the vector of the means of $X_j$ in the categories Glaucoma and normal, weighted by the number of observations in this category.  
    
+HERE HAS TO BE FULL c \\
+Thus
+\[ c = \]
 \( c \propto max \left|n_{group} \cdot (\bar{X}_{j, group} - \bar{X}_{j, node})\right| \quad \) {\footnotesize group $\in$ \{Glaucoma, normal\}} 
 
 
