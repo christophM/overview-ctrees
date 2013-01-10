@@ -14,18 +14,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
 
-<<setup, include=FALSE>>=
-## Highligting for inline R-code
-knit_hooks$set(inline = function(x) {
-  if (is.numeric(x)) return(knitr:::format_sci(x, 'latex'))
-  x = as.character(x)
-  knitr:::hilight_source(x, 'latex', list(prompt=FALSE, size='normalsize'))
-})
-## Setting some options
-opts_knit$set(child.path = "./input/", progress = FALSE)
-
+<<mysetup>>=
+opts_knit$set(child.path = "./input/")
 @
-\SweaveOpts{concordance=TRUE}
 % ---------------------------------------------------------------
 \frontmatter 
 \include{input/title} 
@@ -64,7 +55,10 @@ opts_knit$set(child.path = "./input/", progress = FALSE)
 @ 
 <<best-split-regression, child = "best-split-regression.Rnw">>=
 @ 
+
 \chapter{Classification: Example glaucoma}
+<<glaucoma, child = "glaucoma.Rnw">>=
+@ 
 
 \chapter{Other scales}
 

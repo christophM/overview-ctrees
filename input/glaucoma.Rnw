@@ -1,1 +1,68 @@
-EMPTY
+An example of a classification tree with the conditional trees algorithm. 
+The response is binary and all the covariates are measured on a numeric scale. 
+The data for illustration is available in the \lstinline{ipred} package LINK. 
+
+\subsection*{Data set}
+The glaucoma data set contains eye laser scanning of both healthy persons and persons with glaucoma.
+Glaucoma is an eye disease which in worst case can lead to blindless. 
+If the person is healthy the response variable \lstinline{Class} is zero else one. The subject is to 
+predict if a person has the glaucoma disease or not based on different laser scanning measurements. 
+Measured are different volumes and surfaces of the eye. 
+
+\subsection*{Test statistic}
+CHECK IF TRANSPOSITION T IS CORRECT \\
+The test statistic is different to the regression example. The transformation $g$ for the covariates stays the same, while
+the influence function $h(Y)$ changes, as the scale of $Y$ is different in the classification example. 
+Instead of using the identity for $h$, the influence function is a vector with the same dimensionality as the number of categories, two-dimensional in the Glaucoma example. The vector $h(Y_i)$ equals one at the position $k$ when observation $i$ is in cateogry $k$, and zeros at the other positions. 
+The Glaucoma data set knows two classes, Glaucoma and normal. Thus if observation $i$ has Glaucoma the vector is $(0, 1)^T$. 
+\[h = e_J(\mathbf{Y}_i) = 
+\begin{cases} (1, 0)^T & \text{Glaucoma} \\  (0, 1)^T & \text{normal} \end{cases}   
+\quad \text{and} \quad
+g(\mathbf{X}_{ij}) = \mathbf{X}_{ij} \]
+
+This yields the following linear test statistic: 
+\[\mathbf{T}_j(\mathcal{L}_n, \mathbf{w}) = vec \left(\sum\limits_{i=1}^n w_i \mathbf{X}_{ij} e_J(\mathbf{Y}_i)^T \right) = 
+\begin{pmatrix} n_{Glaucoma} \cdot{} \bar{X}_{j,Glaucoma} \\ n_{normal} \cdot{} \bar{X}_{j, normal} \end{pmatrix}^T \]
+with mean and variance: \\
+%% mean 
+\[\mu_j = \sum\limits_{i:node} X_{ji} \frac{1}{n_{node}} \begin{pmatrix} n_{Glaucoma} \\ n_{normal} \end{pmatrix}^T  = \begin{pmatrix} n_{Glaucoma} \cdot \bar{X}_{j, node} \\ n_{normal} \cdot \bar{X}_{j, node} \end{pmatrix} \]
+%% variance
+\[\Sigma = \frac{n_{node}}{n_{node} - 1} V(h) \cdot \sum\limits_{i:node} X_{ji}^2 - \frac{1}{n_{node} - 1} \left(\sum\limits_{i:node} X_{ij}\right) \left(\sum\limits_{i:node} X_{ij}\right)  \]
+\[V(h) = \frac{1}{n_{node}} \sum\limits_{i:node} 
+\begin{pmatrix} Y_G - \frac{n_G}{n_{node}} \\ Y_N - \frac{n_N}{n_{node}} \end{pmatrix} 
+\begin{pmatrix} Y_G - \frac{n_G}{n_{node}} \\ Y_N - \frac{n_N}{n_{node}} \end{pmatrix}^T =
+\frac{1}{n_{node}}
+\begin{pmatrix} 
+(Y_G - \frac{n_G}{n_{node}})^2 & \dots \\
+\dots  & (Y_N - \frac{n_N}{n_{node}} \\
+\end{pmatrix}
+
+The test statistic is the vector of the means of $X_j$ in the categories Glaucoma and normal, weighted by the number of observations in this category.  
+   
+\( c \propto max \left|n_{group} \cdot (\bar{X}_{j, group} - \bar{X}_{j, node})\right| \quad \) {\footnotesize group $\in$ \{Glaucoma, normal\}} 
+
+
+\subsection*{R-Code}
+<<glaucoma-rcode, message = FALSE, out.width = "7cm">>=
+library("rpart")
+library("party")
+data("GlaucomaM", package = "ipred")
+cond_tree <- ctree(Class ~ ., data = GlaucomaM)
+classic_tree <- rpart(Class ~ ., data = GlaucomaM)
+@ 
+
+<<ctree-glaucoma, out.width = "8cm", out.height = "5.5cm", out.extra = "trim = 0cm 0cm 0cm 0cm", echo = FALSE, fig.align = "left", fig.show = "hold">>=
+plot(cond_tree, inner_panel = node_barplot,
+         edge_panel = function(ctreeobj, ...) { function(...) invisible() }, tnex = 1 )
+@ 
+ 
+<<ctree-glaucoma-text, echo = FALSE>>=
+print(cond_tree@tree)
+@ 
+
+
+<<rpart-glaucoma, out.width = "7cm", out.extra = "trim = 0cm 0cm 0cm 0cm", fig.show = "hold">>=
+rpart.plot(classic_tree, cex = 1.5)
+@
+
+

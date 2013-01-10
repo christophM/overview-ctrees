@@ -5,6 +5,10 @@
 *.log
 *.tex
 *.out
+./input/*.tex
+
+# ignore figure folder
+./figure/*
 
 # ignore temporary files
 *~
