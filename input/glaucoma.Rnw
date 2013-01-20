@@ -66,6 +66,7 @@ n_{Class} \frac{(\bar{X}_{j, Class} - \bar{X}_{j, node})}{\sqrt{\widehat{Var}(Y_
 This standardized test statistic has a very vivid interpretation. The numerator is the difference between the observed mean of the covariate $X_j$ for all the observations in the node which are in the class we are looking at and the mean of $X_j$ in the whole node. We expect $\bar{X}_{j, Class}$ to be very similar to 
 $\bar{X}_{j, node}$ under the null hypothesis of independence of $X_j$ and $Y$. Thus in case of independence between response and covariate the numerator should be very small. The denominator contains the root of the product of variance $Y$ and variance $X_j$. It adjusts the difference. The whole term is weighted by $n_{node}$. 
 
+
 \subsection*{R-Code}
 <<glaucoma-rcode, message = FALSE, out.width = "7cm">>=
 library("rpart")

@@ -14,7 +14,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
 
-<<mysetup>>=
+<<mysetup, include = FALSE>>=
 opts_knit$set(child.path = "./input/")
 @
 % ---------------------------------------------------------------
@@ -33,6 +33,9 @@ opts_knit$set(child.path = "./input/")
 @ 
 \chapter{Motivation}
 <<problems, child = "motivation.Rnw">>=
+@ 
+\chapter{Conditional trees}
+<<ctrees, child = "ctrees.Rnw">>=
 @ 
 
 \chapter{Algorithm}
@@ -60,11 +63,16 @@ opts_knit$set(child.path = "./input/")
 <<glaucoma, child = "glaucoma.Rnw">>=
 @ 
 
+<<best-split-classification, child = "best-split-classification.Rnw">>=
+@ 
+
 \chapter{Other scales}
 
+\chapter{Summary}
+SUM IT UP; POINT TO CFOREST
 \begin{appendix}
-  \chapter{Computational details}
-  \chapter{Digital Appendix}
+  \chapter{Permutation tests}
+  \chapter{Asymptotics (Strasser and Weber)}
 \end{appendix}
 
 \backmatter % ab hier keine Nummerierung mehr

@@ -1,0 +1,29 @@
+Finding the best split point is a little different to classification. 
+The test statistic $T_J$ looks like this:
+\begin{align*}
+T_j (\mathcal{L}, w) =& vec(\sum\limits_{i:node} I_A (X_{j*i} e_J (Y_i)^T) 
+= \frac{1}{n_{node}} \sum\limits_{i:node} I_A(X_{j*i}) \begin{pmatrix} I_1 (Y_i) \\ I_0 (Y_i) \end{pmatrix} = \\
+=& \frac{1}{n_{node}} \begin{pmatrix} \sum\limits_{i:A}  I_1(y_i)  \\ \sum\limits_{i:A}  I_0(y_i) \end{pmatrix} 
+= \frac{1}{n_{node}} \begin{pmatrix} \frac{1}{n_A} n_{G,A} \\ \frac{1}{n_A} n_{N, A} \end{pmatrix} \\
+\end{align*}
+
+
+The mean of this test statistic is: 
+\begin{align*}
+ \mu =&   \mathbb{E}(T|S) = vec((\sum\limits_{i:node} I_A(X_{j*i}) \mathbb{E}(e_J(y_i)| S))) = \\
+ =& (\sum\limits_{i:node} I_A (X{j*i})) (\frac{1}{n_{node}} \sum\limits_{i:node} \begin{pmatrix} Y_{G,i} \\  Y_{N,i}\end{pmatrix})  =\\
+ =& \frac{n_A}{n_{node}} \begin{pmatrix} n_G \\ n_N \end{pmatrix} \\
+\end{align*}
+
+The variance is:
+\begin{align*}
+  \Sigma_j =& \frac{1}{n_{node} - 1} \mathbb{V}(h) (n_{node} n_A - n_A^2) \\
+\end{align*}
+bla 
+\[ \Rightarrow (\Sigma_j)_{kk} =  \frac{1}{n_{node} - 1 } \frac{1}{n_{node}}\underbrace{ (Y_{Class} - \bar{Y}_{Class})^2}_{ = n_{node} \bar{Y}_{Class}(1-\bar{Y}_{Class}) = \widehat{\mathbb{V}}(Y_{Class})} (n_{node} n_A - n_A^2) = \hat{V}(Y_{Class}) \frac{n_A}{n_{node} - 1} (1 - \frac{n_A}{n_{node}}\]
+
+This yields following standardized test statistic $c$: 
+\[
+  c_{max} = \frac{\frac{1}{n_{node}}  n_{class, A} - \frac{n_A}{n_{node}} n_{class}}{ (\Sigma_j)_{class}} = 
+    \frac{\frac{1}{n_{node}}  (n_{class,A} - \frac{n_A \cdot n_{class}}{n_{node}})}{\hat{\mathbb{V}(Y_{class}) \frac{n_A}{n_{node} - 1}(1 - \frac{n_A}{n_{node}})}}
+      \]
