@@ -72,6 +72,8 @@ opts_knit$set(child.path = "./input/")
 SUM IT UP; POINT TO CFOREST
 \begin{appendix}
   \chapter{Permutation tests}
+  <<appendix-permutation-tests, child = "appendix-permutation-test.Rnw">>=
+  @
   \chapter{Asymptotics (Strasser and Weber)}
 \end{appendix}
 
