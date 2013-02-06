@@ -1,13 +1,13 @@
-\documentclass[
-  bibliography=totoc,
-  listof=totoc,BCOR5mm,
-  DIV12, 
-  headsepline, 
-  headings=openany, 
-  twoside, 
-  a4paper,
-  openright]{scrbook}
-
+\documentclass{tufte-book}
+%% \documentclass[
+%%   bibliography=totoc,
+%%   listof=totoc,BCOR5mm,
+%%   DIV12, 
+%%   headsepline, 
+%%   headings=openany, 
+%%   twoside, 
+%%   a4paper,
+%%   openright]{scrbook}
 
 \input{input/prelude.tex}
 
