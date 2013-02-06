@@ -4,7 +4,7 @@ This will be described further in the single steps of the algorithm.
 
 The algorithm: \\
 Permutation test related steps are written in red.  \\
-
+\begin{fullwidth}
 \begin{enumerate}
 \item \textbf{Stop criterion} \\
 \begin{itemize}
@@ -20,7 +20,7 @@ Permutation test related steps are written in red.  \\
 \item \textbf{Repeat}  \\
   Repeat steps 1.), 2.) and 3.) for both of the new partitions
 \end{enumerate}
-
+\end{fullwidth}
 The algorithm starts with the whole data set and tests if it should be splitted. If the answer is positive the variable with the strongest
 association with the response is chosen and the data set will be split into two partitions. The steps will be repeated within both
 of the new partitions. Covariates chosen for a split can be chosen again later (only in the case of a bivariate covariate it doesn't make sense). 
