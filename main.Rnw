@@ -79,9 +79,9 @@ SUM IT UP; POINT TO CFOREST
 
 \backmatter % ab hier keine Nummerierung mehr
    % \listoffigures % Abbildungsverzeichnis 
-\bibliographystyle{plainnat}
-       \nocite{*}
-       \bibliography{input/bibliolog}
+%% \bibliographystyle{plainnat}
+%%        \nocite{*}
+%%       \bibliography{input/bibliolog}
   \newpage
   \listoffigures
 \end{document}

@@ -14,15 +14,15 @@ CART (Classification And Regression Trees) is a famous and widely used example o
 Let us take a closer look at the problems with CART as example and how the conditional trees approach solves them. 
 
 If a tree is allowed to grow full length, pathological split could happen and if the covariate space is large enough we 
-would end up with a tree, which contains only one observation in each terminal node. This tree would very likely be \textbf{overfitting} on the training data and deliver very bad results on new data. Approaches to avoid this problem are techniques called early stopping and pruning. Early stopping forces trees to stop growing when some criterion is not fullfilled. This criterion could be a minimum number of observations in a node. Pruning let's the tree grow at first and prunes the leafs back afterwards.  The CART algorithm uses both early stopping and pruning to avoid overfitting.  \\ \\
+would end up with a tree, which contains only one observation in each terminal node. This tree would very likely be \textbf{overfitting} on the training data and deliver very bad results on new data. Approaches to avoid this problem are techniques called early stopping and pruning. Early stopping forces trees to stop growing when some criterion is not fullfilled. This criterion could be a minimum number of observations in a node. Pruning let's the tree grow at first and prunes the leafs back afterwards.  The CART algorithm uses both early stopping and pruning to avoid overfitting. \sidenote{Overfitting} \\ 
 As the tree strongly depends on the first splits, different variables at for the first split can yield two structurally different trees. 
-Therefore trees (also CART) are sensitive to variance in the data and resulting trees themselves have a \textbf{high variance}.  \\ \\
+Therefore trees (also CART) are sensitive to variance in the data and resulting trees themselves have a \textbf{high variance}.  \\ 
 
-Exhaustive search procedures as used by the CART algorithm tend to choose variables with more possible split points (\textbf{variable selection bias}).  This is a problem of multiple comparison. Covariates with many possible splits are searched more often for the best split.  \\ \\
+Exhaustive search procedures as used by the CART algorithm tend to choose variables with more possible split points (\textbf{variable selection bias}).  This is a problem of multiple comparison. Covariates with many possible splits are searched more often for the best split.  \\ 
 
-The next split is just a heuristic, as the algorithm only searches for the next best split (like CART). Conditional trees algorithm measures the association and uses the covariate with the strongest association with the response variable. The algorithm is embeded in a well-defined framework of hypothesis. \\ \\
+The next split is just a heuristic, as the algorithm only searches for the next best split (like CART). Conditional trees algorithm measures the association and uses the covariate with the strongest association with the response variable. The algorithm is embeded in a well-defined framework of hypothesis. \\ 
 
-In the family of partitioning algorithm, the CART algorithm is one of the more powerful ones, as it can do regression as well as classification. Many other algorithm are restricted to one of the both tasks. Though, CART still lacks support for other scales of $X$ and $Y$. Examples are: ordinal regression and censored data, just to name two.  \\ \\
+In the family of partitioning algorithm, the CART algorithm is one of the more powerful ones, as it can do regression as well as classification. Many other algorithm are restricted to one of the both tasks. Though, CART still lacks support for other scales of $X$ and $Y$. Examples are: ordinal regression and censored data, just to name two.  \\ 
 
 To achieve the above goals, the conditional tree algorithm embeds all decisions into statistical hypothesis tests. The tests are based on conditional inference, i.e. permutation tests. The test statistic used is based on the work of [STRASSER AND WEBER]. 
 

@@ -6,7 +6,7 @@ The data set contains observations of 71 healthy women. The measurements contain
 is measured by DXA (Dual-energy X-ray absorptiometry), a method to determine the amount of body fat. 
 Other variables in the data set are anthropometric measurements like the breadth of the knee, the waist circumference, the hip circumference etc.. 
 The objective is to predict the body fat with the anthropometric measurements, because the DXA method is more expensive and 
-not always available.  \\ \\
+not always available.  
 \subsection*{The test statistic}
 Bodyfat measured by DXA as well as body measurements are numeric variables. Thus one possible choice for the
 influence function $h$ and the transformation function $g_j, \quad \forall j \in 1, \dots, m$ is the identity function, which means
@@ -37,15 +37,14 @@ Therefore:
 
 The linear test statistic is proportional to the pearson correlation coefficient. This means, that the permutation test tests 
 if the correlation between $Y$ and any $X_j$ is different than 0. Thus by choosing the identity function for $h$ and $g_j$ the null 
-hypothesis of independence between $Y$ and $X_j$ is formulated as ``The correlation between $Y$ and $X_j$ is zero''.  \\ \\
-
+hypothesis of independence between $Y$ and $X_j$ is formulated as ``The correlation between $Y$ and $X_j$ is zero''.  \\ 
 The next step is to calculate the test statistic (the pearson correlation coefficient multiplied with a constant) for the 
 observation in the current partition (where $w \neq 0$). 
 The response of the observations will be permutated and the test statistic calculated again. This will be done often enough to 
 approximate the distribution of the test statistic for the sample. If the correlation coefficient of the original data is 
 very extreme compared to the permutated test statistics, the p-value will be very low. \\
 The procedure of calculating the test statistic for the original data and the permutations is done for every 
-covariate $X_j, \quad j \in 1, \dots, m$ seperatly. \\ \\
+covariate $X_j, \quad j \in 1, \dots, m$ seperatly. \\ 
 
 \subsection*{R-Code}
 The data set for the example is available in the mboost LINK package. 
