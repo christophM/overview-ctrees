@@ -22,10 +22,10 @@ g(\mathbf{X}_{ij}) = \mathbf{X}_{ij} \]
 
 This yields the following linear test statistic: 
 \[\mathbf{T}_j(\mathcal{L}_n, \mathbf{w}) = vec \left(\sum\limits_{i=1}^n w_i \mathbf{X}_{ij} e_J(\mathbf{Y}_i)^T \right) = 
-\begin{pmatrix} n_{Glaucoma} \cdot{} \bar{X}_{j,Glaucoma} \\ n_{normal} \cdot{} \bar{X}_{j, normal} \end{pmatrix}^T \]
+\begin{pmatrix} n_{Glaucoma} \cdot{} \bar{X}_{j,Glaucoma} \\ n_{normal} \cdot{} \bar{X}_{j, normal} \end{pmatrix} \]
 with mean and variance: \\
 %% mean 
-\[\mu_j = \sum\limits_{i:node} X_{ji} \frac{1}{n_{node}} \begin{pmatrix} n_{Glaucoma} \\ n_{normal} \end{pmatrix}^T  = \begin{pmatrix} n_{Glaucoma} \cdot \bar{X}_{j, node} \\ n_{normal} \cdot \bar{X}_{j, node} \end{pmatrix} \]
+\[\mu_j = \sum\limits_{i:node} X_{ji} \frac{1}{n_{node}} \begin{pmatrix} n_{Glaucoma} \\ n_{normal} \end{pmatrix}  = \begin{pmatrix} n_{Glaucoma} \cdot \bar{X}_{j, node} \\ n_{normal} \cdot \bar{X}_{j, node} \end{pmatrix} \]
 %% variance
 \[\Sigma = 
 \frac{n_{node}}{n_{node} - 1} V(h) \cdot \sum\limits_{i:node} X_{ji}^2 - \frac{1}{n_{node} - 1} \left(\sum\limits_{i:node} X_{ij}\right) \left(\sum\limits_{i:node} X_{ij}\right)   = 
