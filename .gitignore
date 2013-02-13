@@ -8,8 +8,7 @@
 ./input/*.tex
 
 # ignore figure folder
-./figure/*
-./figure
+figure/
 # ignore temporary files
 *~
 ./tufte-latex-3.5.0/*

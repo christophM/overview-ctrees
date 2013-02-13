@@ -69,7 +69,8 @@ opts_knit$set(child.path = "./input/")
 \chapter{Other scales}
 
 \chapter{Summary}
-SUM IT UP; POINT TO CFOREST
+<<summary, child = "summary.Rnw">>=
+@ 
 \begin{appendix}
   \chapter{Permutation tests}
   <<appendix-permutation-tests, child = "appendix-permutation-test.Rnw">>=
