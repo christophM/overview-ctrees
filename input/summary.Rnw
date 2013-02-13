@@ -1,0 +1,8 @@
+Conditional inference trees are a statistical approach to recursive partitioning. 
+The underlying theory is embedded in a well defined framework of conditional inference aka permutation tests. 
+Unlike most other partitioning algorithms variable selection and best split search are seperated. 
+The choices if to split anyway and if yes, which variable to use for the next split are formulated in terms 
+of statistical hypothesis tests. The framework covers a wide range of different scales for $Y$ and $X$, more than
+mentioned in this paper.  \\
+As CART trees find application in the RandomForest - algorithm, conditional trees can also be used for a special 
+implementation of a RandomForest - algorithm. This is implemented as well in the party package LINK with the cforest function. 
