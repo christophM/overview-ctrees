@@ -51,6 +51,8 @@ opts_knit$set(child.path = "./input/")
 <<best-split, child = "best-split.Rnw">>=
 @ 
 \section{Repeat(4)}
+<<repeat, child = "repeat.Rnw">>=
+@ 
 [Is repeated; choice of alpha;]
 
 \chapter{Continuous Regression: Example bodyfat}
@@ -66,7 +68,7 @@ opts_knit$set(child.path = "./input/")
 <<best-split-classification, child = "best-split-classification.Rnw">>=
 @ 
 
-\chapter{Other scales}
+%% \chapter{Other scales}
 
 \chapter{Summary}
 <<summary, child = "summary.Rnw">>=

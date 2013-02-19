@@ -6,6 +6,21 @@ $H_0 = \cap_{j=1}^m H_0^j$ and $H_0^j: D(\mathbf{Y}| X_j) = D(\mathbf{Y})$ \\
 Each hypothesis $H_0^j$ is tested seperatly. Most simple approach would be to look at the $m$ resulting p-values 
 and to rejected the global null hypothesis of independence if one the p-values exceeds the predetermined significance level $\alpha$ (e.g. $\alpha = 0.05$). Though multiple comparison has to be considered and any multiple testing procedure can be used at this part of the algorithm to determine t
 he if $H_0$ can be rejected. \\ 
-RESULT P-VALUE \\ 
-AGAIN HYPOTHESIS, REJECTED - NOT REJECTED \\
-VARIABLE SELECTION \\
+Thus response is tested for dependency with each covariate seperately. This is done with permutation tests and the test statistic presented above.
+\begin{enumerate}
+\item Choose an influence function $h(Y)$
+\item For each covariate $X_j$ choose an apropriate function $g(X_j)$, which depends on the scale of the covariate. 
+  \begin{enumerate}
+  \item Calculate the test statistic $c_j0$ for the observed data. 
+  \item Permutate the observations in the node
+  \item Calculate $c$ for all permutations
+  \item Calculate p-value (number of test statistics $c$, where $|c| > |c_0|$
+  \end{enumerate}
+\item correct p-value for multiple testing
+\item p-value $< \alpha $? $\Rightarrow$ reject global $H_0$ and search variable for splitting else don't split.
+\end{enumerate}
+
+Assuming the null hypothesis of independence was rejected, the next step is to find out which variable is best for the split. 
+While CART takes the variable which increases a criterion most (which leads to the variable selection bias), conditional trees algorithm uses the p-value for variable selection. By using the p-values, the question of association strength is switched from a level, where the scale of a variable plays a roll, to a level of probability statements where the scales don't matter.  \\
+Thus the covariate with the smallest p-value is taken for the next split. The smallest p-value means the smallest probability of independence with the response. \\
+From the procedure it should get clear, why variable selection and stop criteria are combined in one step. For testing the global null hypothesis every single p-value from each test is needed. These are also needed for the variable selection. 
