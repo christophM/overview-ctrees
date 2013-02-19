@@ -76,6 +76,8 @@ opts_knit$set(child.path = "./input/")
   <<appendix-permutation-tests, child = "appendix-permutation-test.Rnw">>=
   @
   \chapter{Asymptotics (Strasser and Weber)}
+  <<strasser_weber, child = "strasser-weber.Rnw">>=
+  @
 \end{appendix}
 
 \backmatter % ab hier keine Nummerierung mehr

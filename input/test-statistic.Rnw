@@ -1,39 +1,13 @@
 All decisions of the algorithm are embeded in hypothesis tests. These are done with permutation tests (conditional inference).  \\
-PERMUTATION TESTS EXPLANATION? \\
 Strasser and Weber [LINK] have formulated a very general test statistic, which can be used to do a permutation 
 test if a response $Y$ and a covariate $X$ are independent.  
 \[\mathbf{T}_j(L_n, w) = vec \left( \sum\limits_{i = 1}^{n} w_i g_j (X_{ij}) h(Y_i, (Y_1, ..., Y_n))^T \right) \in \mathbb{R}^{p_j q}\] \\
-It may look difficult in the first place, but it can be broken down: 
-\begin{itemize}
-\item $vec()$ The core of the test statistic can be a matrix. In this case $vec()$ - Operator vectorizes the matrix
-\item $\sum$ The test statistic is a sum over all observations
-\item $w$ I lied: Not all observations, because observations which are not in the current partition will get the weight  $w = 0$ and otherwise
-  $w = 1$. This ensures us, that only the data in the current node is in focus. 
-\item $g_j$ A transformation of the j-th covariate $X_j$. Transformation depends on scale of the covariate
-\item $h$ Influence function. Transformation of the response $Y$.
-\end{itemize}
-The test statistic has an expectation and variance: 
-\begin{align*} 
-  \mu_j & = \mathbb{E}(\mathbf{T}_j(\mathcal{L}_n, \mathbf{w})| S(\mathcal{L}_n, \mathbf{w}))  =
-  vec \left( \left(\sum\limits_{i=1}^n w_i g_j (X_{ji})\right) 
-  \mathbb{E}(h|S(\mathcal{L}_n, \mathbf{w}))^T \right) \\
-  \Sigma_j  &= \mathbb{V}(\mathbf{T}_j(\mathcal{L}_n, \mathbf{w})| S(\mathcal{L}_n, \mathbf{w}))  \\
-  & = 
-  \frac{\mathbf{w.}}{\mathbf{w.} - 1} \mathbb{V}( h| S(\mathcal{L}_n, \mathbf{w})) \otimes 
-  \left( \sum\limits_i w_i g_j (X_{ji}) \otimes w_i g_j (X_{ji})^T\right) \\ 
-  & - \frac{1}{\mathbf{w.} - 1} \mathbb{V}( h| S(\mathcal{L}_n, \mathbf{w})) \otimes \left( \sum\limits_i w_i g_j (X_{ji})\right) \otimes
-  \left( \sum\limits_i w_i g_j (X_{ji}) \right) ^T  \\
-  \mathbf{w.} &= \sum\limits_{i=1}^n w_i  \\
-\end{align*}
-
-\begin{align*}
-\mathbb{E}(h|S(\mathcal{L}_n, \mathbf{w})) &= \mathbf{w.}^{-1}\sum\limits_i  w_i h(\mathbf{Y}_i, (\mathbf{Y}_1, \dots, \mathbf{Y}_n)) \in \mathbb{R}^q \\
-\mathbb{V}(h|S(\mathcal{L}_n, \mathbf{w})) &= \mathbf{w.}^{-1} \sum\limits_{i} w_i (h(\mathbf{Y}_i, (\mathbf{Y}_1, \dots, \mathbf{Y}_n)) 
-- \mathbb{E}(h|S(\mathcal{L}_n, \mathbf{w})))  \\ & (h(\mathbf{Y}_i, (\mathbf{Y}_1, \dots, \mathbf{Y}_n)) - \mathbb{E}(h|S(\mathcal{L}_n, \mathbf{w})))^T \\
-\end{align*}
-Thus we can standardize the linear tests statistic: 
+This test statistic might look difficult in the first place, because it is a very general formulation. When looking at particular examples the formula becomes very friendly and seems more natural. This can be seen in the two included examples for regression and classification LINK. 
+At this point you can accept the test statistic as it is or you can read more in the appendix LINK about it.  \\
+This test statistic is standardized before it is used. 
  \(c(\mathbf{t}, \mu, \Sigma) = \max_{k = 1, \dots, pq} \left| \frac{\left({\mathbf{t} - 
   \mathbf{\mu}}\right)_k}{\sqrt{(\Sigma)_{kk}}}\right|\)  
  
-CONVERGENCE BLA FROM STRASSER PAPER?? \\
-SHORT ABOUT PERMUTATION TESTS \\
+Formulas for mean and variance of $T$ is also in the appendix LINK. 
+Thus $c$ is the test statistic which is calculated for each permutation and extreme values for c for the observed data compared to the permutations will lead to rejecting the null hypothesis of independence. 
+ 
