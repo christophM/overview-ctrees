@@ -28,13 +28,13 @@ opts_knit$set(child.path = "./input/")
 
 
 
-\chapter{Introduction}
+\chapter{Recursive Partitioning}
 <<introduction, child = "introduction.Rnw">>=
 @ 
 \chapter{Motivation}
 <<problems, child = "motivation.Rnw">>=
 @ 
-\chapter{Conditional trees}
+\chapter{Recursive partitioning by conditional inference}
 <<ctrees, child = "ctrees.Rnw">>=
 @ 
 
@@ -74,9 +74,11 @@ opts_knit$set(child.path = "./input/")
 @ 
 \begin{appendix}
   \chapter{Permutation tests}
+  \label{chap:perm}
   <<appendix-permutation-tests, child = "appendix-permutation-test.Rnw">>=
   @
   \chapter{Asymptotics (Strasser and Weber)}
+  \label{chap:strasser}
   <<strasser_weber, child = "strasser-weber.Rnw">>=
   @
 \end{appendix}

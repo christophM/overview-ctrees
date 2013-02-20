@@ -1,13 +1,13 @@
-All decisions of the algorithm are embeded in hypothesis tests. These are done with permutation tests (conditional inference).  \\
-Strasser and Weber [LINK] have formulated a very general test statistic, which can be used to do a permutation 
-test if a response $Y$ and a covariate $X$ are independent.  
-\[\mathbf{T}_j(L_n, w) = vec \left( \sum\limits_{i = 1}^{n} w_i g_j (X_{ij}) h(Y_i, (Y_1, ..., Y_n))^T \right) \in \mathbb{R}^{p_j q}\] \\
-This test statistic might look difficult in the first place, because it is a very general formulation. When looking at particular examples the formula becomes very friendly and seems more natural. This can be seen in the two included examples for regression and classification LINK. 
-At this point you can accept the test statistic as it is or you can read more in the appendix LINK about it.  \\
-This test statistic is standardized before it is used. 
- \(c(\mathbf{t}, \mu, \Sigma) = \max_{k = 1, \dots, pq} \left| \frac{\left({\mathbf{t} - 
-  \mathbf{\mu}}\right)_k}{\sqrt{(\Sigma)_{kk}}}\right|\)  
- 
-Formulas for mean and variance of $T$ is also in the appendix LINK. 
-Thus $c$ is the test statistic which is calculated for each permutation and extreme values for c for the observed data compared to the permutations will lead to rejecting the null hypothesis of independence. 
+All decisions in step 1.) and 2.) of the algorithm are embeded in hypothesis tests. These are done with permutation tests (conditional inference).
+Also step 3.) makes use of the following test statistic, although it is not a test. 
+The test statistic
+\sidenote{This test statistic might look difficult in the first place, because it is a very general formulation. When looking at particular examples the formula becomes very friendly and seems more natural. This can be seen in the two included examples for regression and classification LINK. 
+At this point you can accept the test statistic as it is or you can read more in the appendix LINK about it. }
+\[\mathbf{T}_j(L_n, w) = vec \left( \sum\limits_{i = 1}^{n} w_i g_j (X_{ij}) h(Y_i, (Y_1, ..., Y_n))^T \right) \in \mathbb{R}^{p_j q}\] 
+is derived from the framework from Strasser and Weber LINK and can be used to test if a response $Y$ and a covariate $X$ are dependent.  
+This test statistic is standardized before it is used. The test statistic $T$ is not only standardized but should also be mapped to a scalar value. As $T$ can be multidimensional one obvious choice 
+would be to take the maximum of the standardized test statistic.\sidenote{see page \pageref{chap:strasser} for the calculation of $\mu$ and $\Sigma$ of $T$}
+
+ \[c(\mathbf{t}, \mu, \Sigma) = \max_{k = 1, \dots, pq} \left| \frac{\left({\mathbf{t} - \mu}\right)_k}{\sqrt{(\Sigma)_{kk}}}\right|\]  
+Thus $c$ is the test statistic which is calculated for each permutation. Extreme values for c for the observed data compared to the permutations will lead to rejection of the null hypothesis of independence. 
  

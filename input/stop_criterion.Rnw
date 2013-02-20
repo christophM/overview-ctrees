@@ -1,12 +1,10 @@
-In every partition the first step of the algorithm asks: ``Split at all?''.
-This is formulated in a proper Null Hypothesis, the global null hypothesis. Note that global means here global in this partition and not the whole tree. \\
-$H_0:=$ The response $Y$ is independent from all covariates $X_j, \quad j \in 1, \dots, m$. 
-The hypothesis is a joint hypothesis:  \\
-$H_0 = \cap_{j=1}^m H_0^j$ and $H_0^j: D(\mathbf{Y}| X_j) = D(\mathbf{Y})$ \\
-Each hypothesis $H_0^j$ is tested seperatly. Most simple approach would be to look at the $m$ resulting p-values 
-and to rejected the global null hypothesis of independence if one the p-values exceeds the predetermined significance level $\alpha$ (e.g. $\alpha = 0.05$). Though multiple comparison has to be considered and any multiple testing procedure can be used at this part of the algorithm to determine t
-he if $H_0$ can be rejected. \\ 
-Thus response is tested for dependency with each covariate seperately. This is done with permutation tests and the test statistic presented above.
+The first step in each partition is to test if the partition should be split at all. 
+This is formulated as a statistical hypothesis test with the global\sidenote{Note that here global means global in this partition and not for the whole tree}  null hypothesis of independence. It is composed of many (local) null hypothesis of independence between the response $Y$ and each covariate $X_j$, which can be reformulated in terms of the marginal distribution of $Y$. If $Y$ and $X_j$ are independent, the distribution of $Y$ given $X_j$ is the same as the marginal distribution of $Y$. 
+\[H_0: \text{The response } Y \text{ is independent from all covariates } X_j, \quad j \in 1, \dots, m \] 
+\[H_0 = \cap_{j=1}^m H_0^j \text{ and } H_0^j: D(\mathbf{Y}| X_j) = D(\mathbf{Y})\]
+Each hypothesis $H_0^j$ is tested seperatly. For global $H_0$, the most simple approach would be to look at the $m$ \sidenote{Let $m$ be the number of covariates} resulting p-values 
+and to rejected the global null hypothesis of independence if one the p-values exceeds the predetermined significance level $\alpha$ (e.g. $\alpha = 0.05$). Though, multiple comparison has to be considered and any multiple testing procedure can be used at this part of the algorithm to determine if $H_0$ can be rejected. \\ 
+Thus the response is tested for dependency with each covariate seperately. This is done with permutation tests and the test statistic presented above.
 \begin{enumerate}
 \item Choose an influence function $h(Y)$
 \item For each covariate $X_j$ choose an apropriate function $g(X_j)$, which depends on the scale of the covariate. 

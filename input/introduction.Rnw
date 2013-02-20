@@ -1,13 +1,20 @@
 Recursive partitioning is a powerful yet simple tool in predictive and explanatory statistics. 
-Models build by partitioning take on the form of decision trees, which makes the approach easy to understand for everyone without understanding the algorithm behind. The model partitiones the data to reconstruct the relationship
-\[Y = f(X) \], 
-where $Y$ is called the response variable, which depends on a function $f$ of the covariates matrix $X$. 
-IMAGE OF TREE?
-Partitioning can be done with many different approaches and therefore the landscape of algorithms is very vivid. 
-The differences of trees algorithms his the way trees are grown. 
-They can be divided into those which can do regression, those which can do classification and those which can do both. 
-Another characteristic is the number of split per partition step. There are binary splits, which divides the partition into two new partitions
-and multiway splits which yield more than two partitions. The variety gets big in the philosophy of how to determine which variable to take for the next step and where to split it. The point where the tree is not grown any more differs for the algorithms. 
-Somewhere between all of those algorithms is the conditional trees framework. 
+Models built by partitioning take on the form of decision trees, which makes the approach easy to understand for everyone without understanding the algorithm behind. The model partitiones the data to reconstruct the relationship between the response variable$Y$ and the covariates matrix $X_j$.
+\marginnote{\(Y = f(X) \)} \\
 
-
+Partitioning can be done with many different approaches and therefore there is a great variety of algorithms to build trees. 
+They could be categorized into those which can do regression, those which can do classification and those which can do both. 
+Another characteristic is the number of splits per partition step. 
+\marginnote{
+  \begin{tikzpicture}
+    \tikzstyle{every node}=[rectangle,draw]
+    \node {node 1}
+    child { node {node2}}
+    child { node {node3}
+      child { node {node4}} 
+      child { node {node5}}
+    };
+  \end{tikzpicture}
+  }
+There are binary splits, which divides the partition into two new partitions
+and multiway splits which yield more than two partitions. There is even more variety in the philosophy of how to determine which variable to take for the next step and where to split it. Also the stopping criterion, when the tree is not grown any more, differs for the algorithms. But they all have the tree like structure in common.
