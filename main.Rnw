@@ -83,12 +83,12 @@ opts_knit$set(child.path = "./input/")
   @
 \end{appendix}
 
-\backmatter % ab hier keine Nummerierung mehr
-   % \listoffigures % Abbildungsverzeichnis 
+%%\backmatter % ab hier keine Nummerierung mehr
+%% \listoffigures % Abbildungsverzeichnis 
 %% \bibliographystyle{plainnat}
 %%        \nocite{*}
 %%       \bibliography{input/bibliolog}
-  \newpage
-  \listoffigures
+%%  \newpage
+%%  \listoffigures
 \end{document}
 
