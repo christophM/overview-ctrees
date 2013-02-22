@@ -77,7 +77,7 @@ opts_knit$set(child.path = "./input/")
   \label{chap:perm}
   <<appendix-permutation-tests, child = "appendix-permutation-test.Rnw">>=
   @
-  \chapter{Asymptotics (Strasser and Weber)}
+  \chapter{The test statistic}
   \label{chap:strasser}
   <<strasser_weber, child = "strasser-weber.Rnw">>=
   @
