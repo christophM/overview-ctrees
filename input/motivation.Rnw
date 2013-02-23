@@ -1,15 +1,19 @@
 
-Recursive \marginnote{Problems of trees} partitioning suffers from different problems, some of which are already solved by some approaches.
-CART (Classification And Regression Trees) is a famous and widely used example of partitioning algorithms. 
-Let us take a closer look at the problems with CART as example and how the conditional trees approach solves them. 
+Recursive \marginnote{Problems of trees} partitioning suffers from different problems, some of which are already solved by some approaches.  \newline
+CART (Classification And Regression Trees) by \citet{CART} is a popular and widely used partitioning algorithm. 
+Let us take a closer look at the problems taking CART as an example and how the conditional trees approach solves them. 
 
-If \marginnote{Overfitting} a tree is allowed to grow full length, pathological split could happen and if the covariate space is large enough we 
-would end up with a tree, which contains only one observation in each terminal node. This tree would very likely be \textbf{overfitting} on the training data and deliver very bad results on new data. Approaches to avoid this problem are techniques called early stopping and pruning. Early stopping forces trees to stop growing when some criterion is not fullfilled. This criterion could be a minimum number of observations in a node. Pruning let's the tree grow at first and prunes the leafs back afterwards.  The CART algorithm uses both early stopping and pruning to avoid overfitting.  \\ 
-As \marginnote{High variance} the tree strongly depends on the first splits, different variables at for the first split can yield two structurally different trees. 
-Therefore trees (also CART) are sensitive to variance in the data and resulting trees themselves have a \textbf{high variance}.  \\ 
-Exhaustive \marginnote{Variable selection bias}search procedures as used by the CART algorithm tend to choose variables with more possible split points (\textbf{variable selection bias}).  This is a problem of multiple comparison. Covariates with many possible splits are searched more often for the best split.  \\ 
-The \marginnote{Heuristic approach, lack of statistical model} next split is just a heuristic, as the algorithm only searches for the next best split (like CART). Conditional trees algorithm measures the association and uses the covariate with the strongest association with the response variable. The algorithm is embeded in a well-defined framework of hypothesis. \\ 
-In \marginnote{Restriction on possible measurement scales of $Y$ and $X$} the family of partitioning algorithm, the CART algorithm is one of the more powerful ones, as it can do regression as well as classification. Many other algorithm are restricted to one of the both tasks. Though, CART still lacks support for other scales of $X$ and $Y$. Examples are: ordinal regression and censored data, just to name two.  \\ 
+If \marginnote{Overfitting} a tree is allowed to grow full length, pathological splits \sidenote{Splits which separates only a few observations} can happen and if the covariate space is large enough we 
+would end up with a tree, which contains only one observation in each terminal node. This tree would very likely be overfitting on the training data and deliver very bad results on new data. Approaches to avoid this problem are techniques called early stopping and pruning. Early stopping forces trees to stop growing when a criterion is not fullfilled. This criterion could be a minimum number of observations in a node. Pruning lets the tree grow at first and prunes the leafs back afterwards. The CART algorithm uses both early stopping and pruning to avoid overfitting.  \\  
+
+Connected \marginnote{Heuristic approach, lack of statistical model} to overfitting is the lack of a statistical concept behind the splits. \citet{no_significance} mention, that the algorithm ``[...] has no concept of statistical significance, and so cannot distinguish between a significant and an insignificant improvement in the information measure.'' In CART and many other algorithms, the  next split is just an heuristic, as the algorithm only searches for the next best split. The conditional trees algorithm measures the association and uses the covariate with the strongest association with the response variable. \\
+
+%% As \marginnote{High variance} the tree strongly depends on the first splits, different variables at for the first split can yield two structurally different trees. Therefore trees (also CART) are sensitive to variance in the data and resulting trees themselves have a high variance.  \\
+
+Exhaustive \marginnote{Variable selection bias}search procedures as used by the CART algorithm tend to choose variables with more possible split points (variable selection bias).  This is a problem of multiple comparison. Covariates with many possible splits are searched more often for the best split. This problem was identified by different researchers, among them are the inventors of the CART algorithm  \citet[p. 42]{CART}\\
+
+In \marginnote{Restriction on possible measurement scales of $Y$ and $X$} the family of partitioning algorithm, the CART algorithm is one of the more powerful ones, as it can do regression as well as classification. Many other algorithm are restricted to one of the both tasks. Though, CART still lacks support for other scales of $X$ and $Y$. Examples are: ordinal regression and censored data, just to name two.  Conditional trees offer a very general test statistic which can handle more cases than simple regression or classification.\\ 
+
 The next chapter explains how the conditional trees algorithm is designed, to overcome the mentioned problems and to offer an alternative approach. 
 
 

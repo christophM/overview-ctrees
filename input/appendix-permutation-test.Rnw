@@ -1,17 +1,18 @@
-Permutation tests are a special case of non-parametric tests. [QUOTE?] 
-Synonyms are: exact tests, randomization tests, re-randomization tests. 
+Permutation tests\sidenote{Synonyms are: exact tests, randomization tests, re-randomization tests}
+are a special class of non-parametric tests. \citet{permutation}
 In contrast to parametric tests, there is no distribution assumption for the data. The philosophy of permutation tests 
-is that under the Null-Hypothesis of independence the pairs of $(Y_i, X_i)$ are exchangeable (which as well is required to perform a classic permutation test). That means we can obtain the distribution of a test statistic (under the assumption of independence) by calculating the test statistic for all possible permutation of $Y$ and $X$. 
-The classic example is the comparison of two groups of patients, which received either medication A or B (let's call the group label $X$). The success of the medication can be measured by a blood value $Y$. 
-The question to answer is, whether the type of  medication leads to different $Y$. This can be formulated as the a null hypothesis of 
-independence between the group label $X$ and the blood value $Y$. Thus more formally it is a test: 
-\[H_0: \mu_{A} = \mu_{B} \quad \text{vs} \quad H_1 \mu_{A} \neq \mu_{B}\]
-A natural choice for the test statistic is to replace $\mu_A$ and $\mu_B$ with their maximum-likelihood estimators:  $T(X, Y) = \hat{\mu_{A}} - \hat{\mu_{B}} = \frac{1}{n}\sum_{i \in A} Y_i -  \frac{1}{n}\sum_{i \in B} Y_i$. Values close to zero would indicate, that they might be independent. 
-But how close to zero may the values be, so that we still stick with the null hypothesis of independence? To answer that, we calculate the 
-distribution of the test statistic and reject the null hypothesis at the tails of the distribution, where the probability that the measured result can happen under $H_0$ undercuts a beforehand specified $\alpha \in [0, 1]$. 
-PICS AND NUMBERS. 
+is that under the null hypothesis of independence, the pairs of $(Y_i, X_i)$ are exchangeable (which as well is required to perform a classic permutation test). That means we can obtain the distribution of a test statistic (under the assumption of independence) by calculating the test statistic for all possible permutation of $Y$ and $X$. The significance value $p$ is obtained by locating the observed statistic in the distribution. 
 
-One problem of permutation tests is, that the number of possible permutations grows very fast with a bigger number $n$ of observations. 
+%% The classic example is the comparison of two groups of patients, which received either medication A or B (let's call the group label $X$). The success of the medication can be measured by a blood value $Y$. 
+%% The question to answer is, whether the type of  medication leads to different $Y$. This can be formulated as the a null hypothesis of 
+%% independence between the group label $X$ and the blood value $Y$. Thus more formally it is a test: 
+%% \[H_0: \mu_{A} = \mu_{B} \quad \text{vs} \quad H_1 \mu_{A} \neq \mu_{B}\]
+%% A natural choice for the test statistic is to replace $\mu_A$ and $\mu_B$ with their maximum-likelihood estimators:  $T(X, Y) = \hat{\mu_{A}} - \hat{\mu_{B}} = \frac{1}{n}\sum_{i \in A} Y_i -  \frac{1}{n}\sum_{i \in B} Y_i$. Values close to zero would indicate, that they might be independent. 
+%% But how close to zero may the values be, so that we still stick with the null hypothesis of independence? To answer that, we calculate the 
+%% distribution of the test statistic and reject the null hypothesis at the tails of the distribution, where the probability that the measured result can happen under $H_0$ undercuts a beforehand specified $\alpha \in [0, 1]$. 
+%% PICS AND NUMBERS.  DELETE EXAMPLE?
+
+One problem of permutation tests is, that the number of possible permutations grows very fast with a larger number $n$ of observations. 
 The number of permutations is $n!$ and the time for calculating all possible test statistics is for most problems unreasonably. 
 The trick here is to draw a number of random permutation to approximate the distribution of the test statistic. This is called Monte Carlo method. 
 

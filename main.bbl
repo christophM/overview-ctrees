@@ -1,9 +1,14 @@
-\begin{thebibliography}{3}
+\begin{thebibliography}{11}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Breiman et~al.(1984)Breiman, Friedman, Ohlsen, and Stone]{CART}
+L.~Breiman, JH~Friedman, RA~Ohlsen, and CJ~Stone.
+\newblock Classification and regression trees.
+\newblock \emph{Wadsworth International Group}, 1984.
 
 \bibitem[Friedman et~al.(2001)Friedman, Hastie, and
   Tibshirani]{friedman2001elements}
@@ -17,9 +22,57 @@ T.~Hothorn, K.~Hornik, and A.~Zeileis.
 \newblock \emph{Journal of Computational and Graphical Statistics}, 15\penalty0
   (3):\penalty0 651--674, 2006.
 
+\bibitem[Hothorn et~al.(2012)Hothorn, Buehlmann, Kneib, Schmid, and
+  Hofner]{mboost}
+Torsten Hothorn, Peter Buehlmann, Thomas Kneib, Matthias Schmid, and Benjamin
+  Hofner.
+\newblock \emph{Model-Based Boosting}, 2012.
+\newblock URL \url{http://CRAN.R-project.org/package=mboost}.
+\newblock R package version 2.1-3.
+
+\bibitem[Milborrow(2012)]{rpart.plot}
+Stephen Milborrow.
+\newblock \emph{rpart.plot: Plot rpart models. An enhanced version of
+  plot.rpart.}, 2012.
+\newblock URL \url{http://CRAN.R-project.org/package=rpart.plot}.
+\newblock R package version 1.4-3.
+
+\bibitem[Mingers(1987)]{no_significance}
+John Mingers.
+\newblock Expert systems-rule induction with statistical data.
+\newblock \emph{Journal of the operational research society}, pages 39--47,
+  1987.
+
+\bibitem[Moore and McCabe(2008)]{moore2008introduction}
+David~S Moore and George McCabe.
+\newblock \emph{Introduction to the Practice of Statistics Study Guide with
+  Solutions Manual}.
+\newblock WH Freeman, 2008.
+\newblock URL \url{http://bcs.whfreeman.com/ips5e/}.
+
+\bibitem[Peters and Hothorn(2012)]{ipred}
+Andrea Peters and Torsten Hothorn.
+\newblock \emph{ipred: Improved Predictors}, 2012.
+\newblock URL \url{http://CRAN.R-project.org/package=ipred}.
+\newblock R package version 0.9-1.
+
+\bibitem[Sen(accessed February 12, 2013)]{permutation}
+Saunak Sen.
+\newblock Permutation tests, accessed February 12, 2013.
+\newblock URL
+  \url{http://www.epibiostat.ucsf.edu/biostat/sen/statgen/permutation.html#_in%
+troduction}.
+
 \bibitem[Strasser and Weber(1999)]{strasser1999asymptotic}
 H.~Strasser and C.~Weber.
 \newblock On the asymptotic theory of permutation statistics.
-\newblock 1999.
+\newblock \emph{Report Series SFB "Adaptive Information Systems and Modelling
+  in Economics and Management Science", 27.}, 1999.
+
+\bibitem[Therneau et~al.(2012)Therneau, Atkinson, and Ripley]{rpart}
+Terry Therneau, Beth Atkinson, and Brian Ripley.
+\newblock \emph{rpart: Recursive Partitioning}, 2012.
+\newblock URL \url{http://CRAN.R-project.org/package=rpart}.
+\newblock R package version 4.1-0.
 
 \end{thebibliography}

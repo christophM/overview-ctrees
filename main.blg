@@ -3,46 +3,44 @@ The top-level auxiliary file: main.aux
 A level-1 auxiliary file: input/title.aux
 The style file: plainnat.bst
 Database file #1: input/bibliolog.bib
-Warning--empty journal in strasser1999asymptotic
-You've used 3 entries,
+You've used 11 entries,
             2773 wiz_defined-function locations,
-            611 strings with 5439 characters,
-and the built_in function-call counts, 1319 in all, are:
-= -- 108
-> -- 81
-< -- 2
-+ -- 27
-- -- 24
-* -- 110
-:= -- 211
-add.period$ -- 9
-call.type$ -- 3
-change.case$ -- 16
-chr.to.int$ -- 3
-cite$ -- 7
-duplicate$ -- 61
-empty$ -- 105
-format.name$ -- 29
-if$ -- 265
+            657 strings with 6747 characters,
+and the built_in function-call counts, 4450 in all, are:
+= -- 388
+> -- 270
+< -- 8
++ -- 92
+- -- 81
+* -- 340
+:= -- 710
+add.period$ -- 38
+call.type$ -- 11
+change.case$ -- 54
+chr.to.int$ -- 11
+cite$ -- 22
+duplicate$ -- 213
+empty$ -- 344
+format.name$ -- 98
+if$ -- 910
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 4
-newline$ -- 23
-num.names$ -- 12
-pop$ -- 36
+missing$ -- 8
+newline$ -- 68
+num.names$ -- 44
+pop$ -- 116
 preamble$ -- 1
-purify$ -- 14
+purify$ -- 49
 quote$ -- 0
-skip$ -- 47
+skip$ -- 175
 stack$ -- 0
-substring$ -- 31
-swap$ -- 3
-text.length$ -- 1
+substring$ -- 71
+swap$ -- 23
+text.length$ -- 2
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 28
-warning$ -- 1
-while$ -- 11
+type$ -- 111
+warning$ -- 0
+while$ -- 38
 width$ -- 0
-write$ -- 44
-(There was 1 warning)
+write$ -- 152
