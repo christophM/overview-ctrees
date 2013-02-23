@@ -1,13 +1,13 @@
 The first example is a continuous regression model, where both the response and the covariates
 are measured on a numeric scale. The model is illustrated with the \textit{bodyfat} available in 
-the mboost LINK package. 
-\subsection*{The data set}
+the mboost package developed by \citet{mboost}. 
+\subsection*{Data set}
 The data set contains observations of 71 healthy women. The measurements contain body fat, which 
 is measured by DXA (Dual-energy X-ray absorptiometry), a method to determine the amount of body fat. 
 Other variables in the data set are anthropometric measurements like the breadth of the knee, the waist circumference, the hip circumference etc.. 
 The objective is to predict the body fat with the anthropometric measurements, because the DXA method is more expensive and 
 not always available.  
-\subsection*{The test statistic}
+\subsection*{Test statistic}
 Bodyfat measured by DXA as well as body measurements are numeric variables. Thus one possible choice for the
 influence function $h$ and the transformation function $g_j, \quad \forall j \in 1, \dots, m$ is the identity function, which means
 the variables will not be transformed at all.  \\
@@ -16,10 +16,9 @@ Thus:
 \[g = \mathbf{X}_i\]
 This yields following not-standardized test statistic: 
 \[\mathbf{T}_{j}(\mathcal{L}_n, \mathbf{w}) = \sum\limits_{i=1}^n w_i \mathbf{X}_{ij} \mathbf{Y}_i  = \sum\limits_{i:node} \mathbf{X}_{ij} \mathbf{Y}_i\]
-The next step is to standardize the test statistic: 
+The next step is to standardize the test statistic:\sidenote{Definitions of $\mu$ and $\Sigma$ can be found on page \pageref{chap:strasser}}
 \[c_{max}(\mathbf{t}, \mu, \Sigma)  =  \max_{k=1, \dots, pq}\left|\frac{(t - \mu)_k}{\sqrt{(\Sigma)_{kk}}}\right|  = 
 \left|\frac{t-\mu}{\sqrt{\Sigma}}\right| \]
-With LINK TO MU AND SIGMA FORMULA :  \\
 CORRECT INDICES
 \begin{align}
   \mu_j & = \sum\limits_{i = 1}^n X_{ij} \mathbb{E}(h|S) = n \cdot \bar{X}_j \bar{Y}\\ 
@@ -47,14 +46,14 @@ The procedure of calculating the test statistic for the original data and the pe
 covariate $X_j, \quad j \in 1, \dots, m$ seperatly. \\ 
 
 \subsection*{R-Code}
-The data set for the example is available in the mboost LINK package. 
+The data set for the example is available in the mboost (\citet{mboost}). 
 In addition to the response DEXfat it contains the nine body measurements. 
 <<bodyfat-data>>=
 data(bodyfat, package = "mboost")
 head(bodyfat)
 @ 
 
-The conditional tree algorithm is implemented in the party package LINK, which is available on CRAN LINK. 
+The conditional tree algorithm is implemented in the party package (\citet{hothorn2006unbiased}), which is available on \url{http://cran.r-project.org/}.
 The usage is similiar to the \lstinline{lm()}-function, with the formula interface. 
 The formula \lstinline{DEXfat ~ . } means that the tree should modell the response DEXfat (bodyfat measurement) 
 depending on all available covariates. 

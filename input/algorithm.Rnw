@@ -1,4 +1,5 @@
-In every partition, following steps are conducted (permutation test related steps are marked in red): 
+In every partition, following steps are conducted\sidenote{Permutation test related steps are \color{red} marked in red \color{black}} 
+See also the original formulation in \citet[Chapter 2 and 3]{hothorn2006unbiased}
 \vspace{0.5cm}
 \begin{fullwidth}
     \begin{enumerate}

@@ -6,12 +6,11 @@
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
 
 \bibitem[Breiman et~al.(1984)Breiman, Friedman, Ohlsen, and Stone]{CART}
-L.~Breiman, JH~Friedman, RA~Ohlsen, and CJ~Stone.
+L.~Breiman, J.~Friedman, R.~Ohlsen, and C.~Stone.
 \newblock Classification and regression trees.
 \newblock \emph{Wadsworth International Group}, 1984.
 
-\bibitem[Friedman et~al.(2001)Friedman, Hastie, and
-  Tibshirani]{friedman2001elements}
+\bibitem[Friedman et~al.(2001)Friedman, Hastie, and Tibshirani]{elements}
 J.~Friedman, T.~Hastie, and R.~Tibshirani.
 \newblock \emph{The elements of statistical learning}, volume~1.
 \newblock Springer Series in Statistics, 2001.
@@ -63,7 +62,7 @@ Saunak Sen.
   \url{http://www.epibiostat.ucsf.edu/biostat/sen/statgen/permutation.html#_in%
 troduction}.
 
-\bibitem[Strasser and Weber(1999)]{strasser1999asymptotic}
+\bibitem[Strasser and Weber(1999)]{strasser}
 H.~Strasser and C.~Weber.
 \newblock On the asymptotic theory of permutation statistics.
 \newblock \emph{Report Series SFB "Adaptive Information Systems and Modelling

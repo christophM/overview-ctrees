@@ -3,7 +3,7 @@ Every covariate (which is not binary) has more than one possible split. To deter
 The CART algorithm uses Gini for classification and sum of squares for regression. 
 Both of the criteria could be used by the conditional tree algorithm as well, but the approach is different. 
 Because of the different types of possible regression- /classification - models (categorial, ordinal, numeric, censored, ...) a more general approach is suitable. 
-Again the test statistic framework from Strasser and Weber [CITE] can be used. 
+Again the test statistic derived framework from \citet{strasser} can be used. 
 A special linear test statistic, of the same kind, which is used for the stop criterion and variable selection, can be used. 
 The formula is: \[T_{j}^A(L_n, w) = vec \left( \sum\limits_{i=1}^n w_i I(X_{ji} \in A) \cdot h(Y_i, (Y_1, \dots, Y_n))^T \right)\]
 with $A$ beeing a possible partition of the current observations and 

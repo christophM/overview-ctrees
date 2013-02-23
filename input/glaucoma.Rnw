@@ -1,6 +1,6 @@
 An example of a classification tree with the conditional trees algorithm. 
 The response is binary and all the covariates are measured on a numeric scale. 
-The data for illustration is available in the \lstinline{ipred} package LINK. 
+The data for illustration is available in the \lstinline{ipred} package (\citet{ipred}). 
 
 \subsection*{Data set}
 The glaucoma data set contains eye laser scanning of both healthy persons and persons with glaucoma.
@@ -10,7 +10,6 @@ predict if a person has the glaucoma disease or not, based on different laser sc
 Measured are different volumes and surfaces of the eye. 
 
 \subsection*{Test statistic}
-CHECK IF TRANSPOSITION T IS CORRECT \\
 The test statistic is different to the one from the regression example. The transformation $g$ for the covariates stays the same, while
 the influence function $h(Y)$ changes, as the scale of $Y$ is different in the classification example. 
 Instead of using the identity for $h$, the influence function is a vector with the same dimensionality as the number of categories, two-dimensional in the Glaucoma example. The vector $h(Y_i)$ equals one at the position $k$ when observation $i$ is in cateogry $k$, and zeros at the other positions. 

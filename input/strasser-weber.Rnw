@@ -1,4 +1,4 @@
-Hothorn und Co QUOTE use the following test statistic which is derived from Strasser and Weber QUOTE
+\citet{hothorn2006unbiased} use the following test statistic which is derived from \citet{strasser}
 \[\mathbf{T}_j(L_n, w) = vec \left( \sum\limits_{i = 1}^{n} w_i g_j (X_{ij}) h(Y_i, (Y_1, ..., Y_n))^T \right) \in \mathbb{R}^{p_j q}\] \\
 It may look difficult in the first place, but it can be broken down to the following: 
 \begin{itemize}
@@ -9,7 +9,7 @@ It may look difficult in the first place, but it can be broken down to the follo
 \item $g_j$ A transformation of the j-th covariate $X_j$. Transformation depends on scale of the covariate
 \item $h$ Influence function. Transformation of the response $Y$.
 \end{itemize}
-The test statistic has an expectation and variance, which are also derived by the framework from Strasser and Weber QUOTE:  
+The test statistic has an expectation and variance, which are also derived by the framework from \citet{strasser}:  
 \begin{align*} 
   \mu_j & = \mathbb{E}(\mathbf{T}_j(\mathcal{L}_n, \mathbf{w})| S(\mathcal{L}_n, \mathbf{w}))  =
   vec \left( \left(\sum\limits_{i=1}^n w_i g_j (X_{ji})\right) 

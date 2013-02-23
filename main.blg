@@ -5,7 +5,7 @@ The style file: plainnat.bst
 Database file #1: input/bibliolog.bib
 You've used 11 entries,
             2773 wiz_defined-function locations,
-            657 strings with 6747 characters,
+            657 strings with 6721 characters,
 and the built_in function-call counts, 4450 in all, are:
 = -- 388
 > -- 270

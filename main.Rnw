@@ -55,12 +55,14 @@ opts_knit$set(child.path = "./input/")
 @ 
 
 \chapter{Continuous Regression: Example bodyfat}
+\label{chap:regression}
 <<bodyfat, child = "bodyfat.Rnw">>=
 @ 
 <<best-split-regression, child = "best-split-regression.Rnw">>=
 @ 
 
 \chapter{Classification: Example glaucoma}
+\label{chap:classification}
 <<glaucoma, child = "glaucoma.Rnw">>=
 @ 
 
@@ -73,11 +75,11 @@ opts_knit$set(child.path = "./input/")
 <<summary, child = "summary.Rnw">>=
 @ 
 \begin{appendix}
-  \chapter{Permutation tests}
+  \chapter{appendix: Permutation tests}
   \label{chap:perm}
   <<appendix-permutation-tests, child = "appendix-permutation-test.Rnw">>=
   @
-  \chapter{The test statistic}
+  \chapter{appendix: Test statistic}
   \label{chap:strasser}
   <<strasser_weber, child = "strasser-weber.Rnw">>=
   @
