@@ -1,21 +1,21 @@
-Steps 1) and 2) of the algorithm are completed. The covariate with the strongest association is chosen for the next partition step. 
-Every covariate (which is not binary) has more than one possible split. To determine where to split, a criterion which measures the goodness of the split has to be applied. 
+Steps 1) and 2) of the algorithm are completed. The covariate $X_{j*}$ with the strongest association is chosen for the next split.
+Every covariate (which is not binary) has more than one possible split points. To determine where to split, a criterion which measures the goodness of the split has to be applied. 
 The CART algorithm uses Gini for classification and sum of squares for regression. 
-Both of the criteria could be used by the conditional tree algorithm as well, but the approach is different. 
+Both of the criteria could be used by the conditional tree algorithm as well, but the used approach is different. 
 Because of the different types of possible regression- /classification - models (categorial, ordinal, numeric, censored, ...) a more general approach is suitable. 
-Again the test statistic derived framework from \citet{strasser} can be used. 
-A special linear test statistic, of the same kind, which is used for the stop criterion and variable selection, can be used. 
-The formula is: \[T_{j}^A(L_n, w) = vec \left( \sum\limits_{i=1}^n w_i I(X_{ji} \in A) \cdot h(Y_i, (Y_1, \dots, Y_n))^T \right)\]
-with $A$ beeing a possible partition of the current observations and 
-\[I(X_{ji} \in A) = \begin{cases} 1, & X_{ij} \in A \\ 0 & X_{ij} \not\in A \end{cases}\]
-The difference to the test statistic for the association test is the transformation of $X$. We only look at the different partitions of 
-$X$. Therefore the scale of $X$ is not of any interest anymore, but the partition which emerges by a certain split point. 
-An appropriate function to capture only the difference in the partition, the transformation of $X$ is the indicator function. 
+The solution is again the test statistic derived from \citet{strasser}. 
+A special case of the linear test statistic can be used, the formula is: \[T_{j}^A(L_n, w) = vec \left( \sum\limits_{i=1}^n w_i I(X_{j*i} \in A) \cdot h(Y_i, (Y_1, \dots, Y_n))^T \right)\]
+with $A$ being a possible partition of the current observations and 
+\[I(X_{j*i} \in A) = \begin{cases} 1, & X_{j*i} \in A \\ 0 & X_{j*i} \not\in A \end{cases}\]
+The difference to the test statistic for the association test is the transformation of $X_{j*}$. We only look at the different partitions of 
+$X_{j*} $. Therefore the scale of $X_{j*}$ is not of any interest anymore, but the partition which emerges by a certain split point. 
+An appropriate function to capture only the difference in the partition, the transformation of $X_{j*}$ is the indicator function. 
 This results in the statistic 
 \[c_{max}(\mathbf{t}, \mu, \Sigma) = max_{k} \left| \frac{(\mathbf{t}^A-\mu)_k}{\sqrt{(\Sigma)_{kk}}}\right|\]
-Note that the test statistic does not depend on the transformation $g_j$ of $X_j$. The scale of the chosen covariate $X_j$ is
-regarded in another way: The possible partitions $A$ and $A^C$ depend on the scale of $X_j$. For example if $X_j$ is categorial the different partitions $A$ are combinations of the different categories. A continuous covariate will be searched for a split on the real line. Ordinal covariates will be searched for splits where the two resulting partitions are a result of a inbetween the ordered categories. 
+Note that the test statistic does not depend on the transformation $g_{j*}$ of $X_{j*}$. The scale of the chosen covariate $X_{j*}$ is
+regarded in another way: The possible partitions $A$ and $A^C$ depend on the scale of $X_{j*}$. For example if $X_{j*}$ is categorial the different partitions $A$ are combinations of the different categories. A continuous covariate will be searched for a split on the real line. Ordinal covariates will be searched for splits where the two resulting partitions are a result of a inbetween the ordered categories. 
   
-We search the $A$ which maximizes:\marginnote{\includegraphics[width = 5cm]{images/partition.png}}
+We search the partition $A$ which maximizes $c$:\marginnote{\includegraphics[width = 5cm]{images/partition.png}}
 \[A^{\ast} = argmax_{A} c(t_{j*}^A, \mu_{j*}^A, \Sigma_{j*}^A)\]
-Additional stopping criteria like stopping when the resulting partitions would become to small can be implemented by restricting the searched split points. 
+Maximizing $c$ means, that we search for the partition with the strongest deviation of $h(Y)$ from what we would expect under independence between $Y$ and $X_{j*}$.
+Additional stopping criteria like stopping, when the resulting partitions would become to small, can be implemented by restricting the searched split points. 

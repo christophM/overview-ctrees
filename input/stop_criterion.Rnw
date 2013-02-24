@@ -1,24 +1,23 @@
-The first step in each partition is to test if the partition should be split at all. \marginnote{\includegraphics[width = 5cm]{images/global_hzero.png}} 
-This is formulated as a statistical hypothesis test with the global\sidenote{Note that here global means global in this partition and not for the whole tree}  null hypothesis of independence. It is composed of many (local) null hypothesis of independence between the response $Y$ and each covariate $X_j$, which can be reformulated in terms of the marginal distribution of $Y$. If $Y$ and $X_j$ are independent, the distribution of $Y$ given $X_j$ is the same as the marginal distribution of $Y$. Or more formally: 
+The first step in each partition is to test if the partition should be split at all. \marginnote{\includegraphics[width = 5cm]{images/global_hzero.png}} This is formulated as a statistical hypothesis test with the global\sidenote{Note that global means global for the partition but not for the whole tree}  null hypothesis of independence. It is composed of many (local) null hypotheses of independence between the response $Y$ and each covariate $X_j$, which can be reformulated in terms of the marginal distribution of $Y$. If $Y$ and $X_j$ are independent, the distribution of $Y$ given $X_j$ is the same as the marginal distribution of $Y$. Or more formally: 
 \[H_0: \text{The response } Y \text{ is independent from all covariates } X_j, \quad j \in 1, \dots, m \] 
 \[H_0 = \cap_{j=1}^m H_0^j \text{ and } H_0^j: D(\mathbf{Y}| X_j) = D(\mathbf{Y})\]
-One way to test for such a compound hypothesis is to test each of the $m$ \sidenote{Let $m$ be the number of covariates} hypothesis seperately and to reject the global null hypothesis if one of the covariates and $Y$ are significantly independent. To overcome the problem of multiple testing a p-value correction has to take place. The whole procedure:  
+One way to test for such a compound hypothesis is to test each of the $m$ \sidenote{Let $m$ be the number of covariates} hypothesis seperately and to reject the global null hypothesis if one of the covariates and $Y$ are significantly dependent. To overcome the problem of multiple testing a p-value correction has to take place. The whole procedure:  
 
 \begin{enumerate}
 \item Choose an influence function $h$ depending on scale of $Y$
 \item For each covariate $X_j$ do the following:    
   \begin{enumerate}[label = \arabic*), itemsep = 0.3em]
-  \item Choose an apropriate function $g_j$, which depends on the scale of the covariate $X_j$ 
+  \item Choose an apropriate function $g_j$, which depends on the scale of the covariate $X_j$ \sidenote{The functions $h$ and $g_j$ stays the same for each partition, so in theory it is enough to choose them once before the first split}
   \item Calculate the test statistic $c_{j0}$ for the observed data. 
   \item Permute the observations in the node
   \item Calculate $c$ for all permutations
-  \item Calculate the p-value\sidenote{Every $X_j$ gets an own p-value} (number of test statistics $c$, where $|c| > |c_0|$
+  \item Calculate the p-values\sidenote{Each $X_j$ gets an own p-value} (number of test statistics $c$, where $|c| > |c_0|$
   \end{enumerate}
-\item Correct p-value for multiple testing\sidenote{Result is the p-value for global test}
-\item p-value $< \alpha $? $\Rightarrow$ reject global $H_0$ and search variable for splitting else don't split.
+\item Correct p-value for multiple testing\sidenote{Result is the p-value for the global test}
+\item p-value $< \alpha$?\sidenote{$alpha$ is the prespecified confidence level} $\Rightarrow$ reject global $H_0$ and search variable for splitting else don't split.
 \end{enumerate}
 
-Assuming the null hypothesis of independence was rejected, the next step is to find out which variable would be  best to take for the split. 
-While CART takes the variable which increases a criterion most (which leads to the variable selection bias), the conditional trees algorithm uses the p-value for variable selection. By using the p-values, the question of association strength is switched from a level, where the scale of a variable plays a roll, to a level of probability statements where the scales don't matter.  \\
-Thus the covariate with the smallest p-value is taken for the next split. The smallest p-value means the smallest probability of independence with the response. \marginnote{\includegraphics[width = 5cm]{images/variable_selection.png}}
+Assuming the null hypothesis of independence was rejected, then the next step is to find the best variable for the split. 
+While CART takes the variable which increases a criterion most (which leads to the variable selection bias), the conditional trees algorithm uses the p-value for variable selection. By using the p-values, the question of association strength is switched to statements of probability, where the original scales don't matter.  \\
+Thus the covariate with the smallest p-value is taken for the next split. Smallest p-value means the smallest probability of independence between the chosen covariate and the response. \marginnote{\includegraphics[width = 5cm]{images/variable_selection.png}}
 From the procedure it should get clear, why variable selection and stop criteria are combined in one step. For testing the global null hypothesis every single p-value from each test is needed. These are also needed for the variable selection. 
