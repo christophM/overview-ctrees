@@ -58,8 +58,7 @@ opts_knit$set(child.path = "./input/")
 \label{chap:regression}
 <<bodyfat, child = "bodyfat.Rnw">>=
 @ 
-<<best-split-regression, child = "best-split-regression.Rnw">>=
-@ 
+
 
 \chapter{Classification: Example glaucoma}
 \label{chap:classification}
