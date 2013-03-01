@@ -1,69 +1,96 @@
-An example of a classification tree with the conditional trees algorithm. 
-The response is binary and all the covariates are measured on a numeric scale. 
-The data for illustration is available in the \lstinline{ipred} package (\citet{ipred}). 
+This is an example of a classification tree with the conditional trees algorithm. 
+The response is binary and all the covariates are measured on a numeric scale. \marginnote{$Y$ binary, $X_j$ numeric $\quad j = 1, \dots, m$}
+The data for this illustration is available in the \lstinline{ipred} package (\citet{ipred}). 
 
 \subsection*{Data set}
-The glaucoma data set contains eye laser scanning of both healthy persons and persons with glaucoma.
+The glaucoma data set contains eye laser scanning of both healthy persons and persons with glaucoma.\marginnote{n = 196}
 Glaucoma is an eye disease which in worst case can lead to blindness. 
-If the person is healthy the response variable \lstinline{Class} is zero else one. The subject is to 
-predict if a person has the glaucoma disease or not, based on different laser scanning measurements. 
-Measured are different volumes and surfaces of the eye. 
+If the person is healthy the response variable \lstinline{Class} is zero else if the person suffers from glaucmoa, one. The subject is to 
+predict if a person has the glaucoma disease or not, based on different laser scanning measurements. .\marginnote{Predict glaucoma based on eye measurements}
+Measured are different volumes and surfaces of the eye
 
 \subsection*{Test statistic}
 The test statistic is different to the one from the regression example. The transformation $g$ for the covariates stays the same, while
 the influence function $h(Y)$ changes, as the scale of $Y$ is different in the classification example. 
-Instead of using the identity for $h$, the influence function is a vector with the same dimensionality as the number of categories, two-dimensional in the Glaucoma example. The vector $h(Y_i)$ equals one at the position $k$ when observation $i$ is in cateogry $k$, and zeros at the other positions. 
-The Glaucoma data set knows two classes, Glaucoma and normal. Thus if observation $i$ has Glaucoma the vector is $(0, 1)^T$. 
-\[h = e_J(\mathbf{Y}_i) = 
+Instead of using the identity for $h$, the influence function is a vector with the same dimensionality as the number of categories, two-dimensional in the glaucoma example. The vector $h(Y_i)$ equals one at the position $k$ when observation $i$ is in cateogry $k$, and zeros at the other positions. 
+The Glaucoma data set knows two classes, glaucoma and normal. Thus if person $i$ has glaucoma, the vector $h(Y_i)$ is $(0, 1)^T$. 
+\[h = e_J(\mathbf{Y}_i) = \begin{pmatrix} Y_{G,i} \\ Y_{N, i} \end{pmatrix} = 
 \begin{cases} (1, 0)^T & \text{Glaucoma} \\  (0, 1)^T & \text{normal} \end{cases}   
 \quad \text{and} \quad
-g(\mathbf{X}_{ij}) = \mathbf{X}_{ij} \]
+g(\mathbf{X}_{ji}) = \mathbf{X}_{ji} \]
 
-This yields the following linear test statistic: 
-\[\mathbf{T}_j(\mathcal{L}_n, \mathbf{w}) = vec \left(\sum\limits_{i=1}^n w_i \mathbf{X}_{ij} e_J(\mathbf{Y}_i)^T \right) = 
-\begin{pmatrix} n_{Glaucoma} \cdot{} \bar{X}_{j,Glaucoma} \\ n_{normal} \cdot{} \bar{X}_{j, normal} \end{pmatrix} \]
-with mean and variance: \\
+This yields the following linear test statistic:\sidenote{$n_N$: Number of healthy persons in the node \\ $n_G$: Number of persons with glaucoma in node} 
+\[\mathbf{T}_j(\mathcal{L}_n, \mathbf{w}) = vec \left(\sum\limits_{i=1}^n w_i \mathbf{X}_{ji} e_J(\mathbf{Y}_i)^T \right) = 
+% \begin{pmatrix} n_{glaucoma} \cdot{} \bar{X}_{j,glaucoma} \\ n_{normal} \cdot{} \bar{X}_{j, normal} \end{pmatrix}  = 
+\begin{pmatrix} n_{G} \cdot \bar{X}_{j, G} \\ n_{N} \cdot \bar{X}_{j, N} \end{pmatrix} \]
+The test statistic is the vector of the means of $X_j$ in the categories glaucoma and normal, weighted by the number of observations in this category. Again we need mean and variance to standardize $T_j$: \\
 %% mean 
-\[\mu_j = \sum\limits_{i:node} X_{ji} \frac{1}{n_{node}} \begin{pmatrix} n_{Glaucoma} \\ n_{normal} \end{pmatrix}  = \begin{pmatrix} n_{Glaucoma} \cdot \bar{X}_{j, node} \\ n_{normal} \cdot \bar{X}_{j, node} \end{pmatrix} \]
-%% variance
-\[\Sigma = 
-\frac{n_{node}}{n_{node} - 1} V(h) \cdot \sum\limits_{i:node} X_{ji}^2 - \frac{1}{n_{node} - 1} \left(\sum\limits_{i:node} X_{ij}\right) \left(\sum\limits_{i:node} X_{ij}\right)   = 
-\frac{1}{n_{node} - 1} V(h) n_{node} \sum\limits_{i:node} \left(X_{ji} - \bar{X}_{j, node}\right)^2\]
-
 \begin{align*}
-V(h) & = \frac{1}{n_{node}} \sum\limits_{i:node} 
+\mu_j & = \sum\limits_{i \in node} X_{ji} \frac{1}{n_{node}} \begin{pmatrix} n_{G} \\ n_{N} \end{pmatrix}  = 
+\begin{pmatrix} n_{G} \cdot \bar{X}_{j, node} \\ n_{N} \cdot \bar{X}_{j, node} \end{pmatrix} \\
+%% variance
+\Sigma_j & = 
+\frac{n_{node}}{n_{node} - 1} V_{node}(h) \cdot \sum\limits_{i \in node} X_{ji}^2 - \frac{1}{n_{node} - 1} \left(\sum\limits_{i \in node} X_{ji}\right) \left(\sum\limits_{i \in node} X_{ji}\right)   \\
+& = 
+\frac{1}{n_{node} - 1} V_{node}(h) n_{node} \sum\limits_{i \in node} \left(X_{ji} - \bar{X}_{j, node}\right)^2 \\
+V_{node}(h) & = \frac{1}{n_{node}} \sum\limits_{i \in node} 
 \left(e_J (Y_i) -  \begin{pmatrix} \frac{n_G}{n_{node}} \\ \frac{n_N}{n_{node}} \end{pmatrix} \right)
 \left(e_J (Y_i) -  \begin{pmatrix} \frac{n_G}{n_{node}} \\ \frac{n_N}{n_{node}} \end{pmatrix} \right)^T
 \\ & = 
-\frac{1}{n_{node}} \sum\limits_{i:node} 
-\begin{pmatrix} Y_G - \frac{n_G}{n_{node}} \\ Y_N - \frac{n_N}{n_{node}} \end{pmatrix} 
-\begin{pmatrix} Y_G - \frac{n_G}{n_{node}} \\ Y_N - \frac{n_N}{n_{node}} \end{pmatrix}^T 
+\frac{1}{n_{node}} \sum\limits_{i \in node} 
+\begin{pmatrix} Y_{G, i} - \frac{n_G}{n_{node}} \\ Y_{N, i} - \frac{n_N}{n_{node}} \end{pmatrix} 
+\begin{pmatrix} Y_{G, i} - \frac{n_G}{n_{node}} \\ Y_{N, i} - \frac{n_N}{n_{node}} \end{pmatrix}^T 
 \\ & = 
-\frac{1}{n_{node}} \sum\limits_{i:node} 
-\begin{pmatrix} Y_G - \bar{Y}_G \\ Y_N - \bar{Y}_N \end{pmatrix} 
-\begin{pmatrix} Y_G - \bar{Y}_G \\ Y_N - \bar{Y}_N \end{pmatrix}^T 
+\frac{1}{n_{node}} \sum\limits_{i \in node} 
+\begin{pmatrix} Y_{G, i} - \bar{Y}_{G} \\ Y_{N, i} - \bar{Y}_{N} \end{pmatrix} 
+\begin{pmatrix} Y_{G, i} - \bar{Y}_{G} \\ Y_{N, i} - \bar{Y}_{N} \end{pmatrix}^T 
 \\ & = 
 \frac{1}{n_{node}}
 \begin{pmatrix} 
-(Y_G - \bar{Y}_G)^2 & (Y_G - \bar{Y}_G)(Y_N - \bar{Y}_N) \\
-(Y_G - \bar{Y}_G)(Y_N - \bar{Y}_N)  & (Y_N - \bar{Y}_N)^2 \\
+\sum\limits_{i \in node} (Y_{G, i} - \bar{Y}_{G})^2 & \sum\limits_{i \in node}(Y_{G, i} - \bar{Y}_{G})(Y_{N, i} - \bar{Y}_{N}) \\
+\sum\limits_{i \in node}(Y_{G, i} - \bar{Y}_{G})(Y_{N, i} - \bar{Y}_{N})  & \sum\limits_{i \in node}(Y_{N, i} - \bar{Y}_{N})^2 \\
 \end{pmatrix} 
 \\
 \end{align*}
-Thus: 
+For the standardized test statistic only the diagonal elements of the covariance matrix are needed:
 \begin{align*}
-(\Sigma)_{kk} & = \frac{1}{n_{node} - 1} \sum\limits_{i:node} (Y_{Class} - \bar{Y}_{Class})^2 \sum\limits_{i:node} (X_{ji} - \bar{X}_{ji})^2 \quad \text{Class} \in \{G, N\}  \\
+(\Sigma_j)_{kk} & = \frac{1}{n_{node} - 1} \sum\limits_{i \in node} (Y_{Class} - \bar{Y}_{Class})^2 \sum\limits_{i \in node} (X_{ji} - \bar{X}_{ji})^2 \quad \text{Class} \in \{G, N\}  \\
   & =
 \underbrace {n_{node} \bar{Y}_{Class} (1 - \bar{Y}_{class}) }_{\widehat{Var}(Y_{Class, node})}
-\underbrace {\frac{1}{n_{node} - 1}\sum\limits_{i:node} \left( X_{ji} - \bar{X}_{j, node} \right)^2}_{\widehat{Var}(X_{j, node})} \\
+\underbrace {\frac{1}{n_{node} - 1}\sum\limits_{i \in node} \left( X_{ji} - \bar{X}_{j, node} \right)^2}_{\widehat{Var}(X_{j, node})} \\
 \end{align*}
-The test statistic is the vector of the means of $X_j$ in the categories Glaucoma and normal, weighted by the number of observations in this category.  
-
-Thus
-\[ c = n_{Class}  \frac{ \bar{X}_{j, Class} - n_{Class} \bar{X}_{j, node}}{\sqrt{(\Sigma)_{kk}}} = 
+And finally the standardized test statistic: 
+\[ c = \frac{n_{Class} \bar{X}_{j, Class} - n_{Class} \bar{X}_{j, node}}{\sqrt{(\Sigma)_{kk}}} = 
 n_{Class} \frac{(\bar{X}_{j, Class} - \bar{X}_{j, node})}{\sqrt{\widehat{Var}(Y_{Class, node})\widehat{Var}(X_{j, node})) }}\]
 This standardized test statistic has a very vivid interpretation. The numerator is the difference between the observed mean of the covariate $X_j$ for all the observations in the node which are in the class we are looking at and the mean of $X_j$ in the whole node. We expect $\bar{X}_{j, Class}$ to be very similar to 
-$\bar{X}_{j, node}$ under the null hypothesis of independence of $X_j$ and $Y$. Thus in case of independence between response and covariate the numerator should be very small. The denominator contains the root of the product of variance $Y$ and variance $X_j$. It adjusts the difference. The whole term is weighted by $n_{node}$. 
+$\bar{X}_{j, node}$ under the null hypothesis of independence of $X_j$ and $Y$. Thus in case of independence between response and covariate the numerator should be very small. The denominator contains the root of the product of variance $Y$ and variance $X_j$. It adjusts the difference. The whole term is weighted by $n_{Class}$. 
+
+\subsection*{Test statistic for splitting criteria}
+Finding the best split point differs to the regression example as well.  
+The test statistic $T_{j*}^A$ looks like this:
+\begin{align*}
+T_{j*}^A (\mathcal{L}, w) =& vec\left(\sum\limits_{i \in node} I (X_{j*i} \in A) e_j (Y_i)^T\right)
+= \frac{1}{n_{node}} \sum\limits_{i \in node} I(X_{j*i} \in A) \begin{pmatrix} Y_{G, i} \\ Y_{N, i} \end{pmatrix} = \\
+=& \frac{1}{n_{node}} \begin{pmatrix} \sum\limits_{i \in A}  Y_{G, i}  \\ \sum\limits_{i \in A}  Y_{N, i} \end{pmatrix} 
+= \frac{1}{n_{node}} \begin{pmatrix} \frac{1}{n_A} n_{G,A} \\ \frac{1}{n_A} n_{N, A} \end{pmatrix} \\
+\end{align*}
+
+
+The mean and variance of this test statistic are: 
+\begin{align*}
+ \mu_{j*} =&   \mathbb{E}(T|S) = vec\left(\sum\limits_{i \in node} I_A(X_{j*i}) \mathbb{E}(e_J(Y)| S)\right) = \\
+ =& \left(\sum\limits_{i \in node} I_A (X_{j*i}) \right) \left(\frac{1}{n_{node}} \sum\limits_{i \in node} \begin{pmatrix} Y_{G,i} \\  Y_{N,i}\end{pmatrix}\right)  =\\
+ =& \frac{n_A}{n_{node}} \begin{pmatrix} n_G \\ n_N \end{pmatrix} \\
+  \Sigma_{j*} =& \frac{1}{n_{node} - 1} \mathbb{V}(h) (n_{node} n_A - n_A^2) \\
+\end{align*}
+\[ \Rightarrow (\Sigma_{j*})_{kk} =  \frac{1}{n_{node} - 1 } \frac{1}{n_{node}}\underbrace{ (Y_{Class} - \bar{Y}_{Class})^2}_{ = n_{node} \bar{Y}_{Class}(1-\bar{Y}_{Class}) = \widehat{\mathbb{V}}(Y_{Class})} (n_{node} n_A - n_A^2) = \hat{V}(Y_{Class}) \frac{n_A}{n_{node} - 1} \left(1 - \frac{n_A}{n_{node}}\right)\]
+
+This yields following standardized test statistic $c$: 
+\[
+  c_{max, Class} = \frac{\frac{1}{n_{node}}  n_{class, A} - \frac{n_A}{n_{node}} n_{class}}{ (\Sigma_j)_{class}} = 
+    \frac{\frac{1}{n_{node}}  (n_{class,A} - \frac{n_A \cdot n_{class}}{n_{node}})}{\hat{\mathbb{V}}(Y_{class}) \frac{n_A}{n_{node} - 1}(1 - \frac{n_A}{n_{node}})} \quad \text{Class} \in \{G, N\}\]  
+The enumerator contains the difference between the actual number of observations with glaucoma (or normal) in partition A and the number
+of observations in A with glaucoma (or normal) under complete randomness. 
 
 
 \subsection*{R-Code}
@@ -75,18 +102,16 @@ cond_tree <- ctree(Class ~ ., data = GlaucomaM)
 classic_tree <- rpart(Class ~ ., data = GlaucomaM)
 @ 
 
-<<ctree-glaucoma, out.width = "8cm", out.height = "5.5cm", out.extra = "trim = 0cm 0cm 0cm 0cm", echo = FALSE, fig.align = "left", fig.show = "hold">>=
-plot(cond_tree, inner_panel = node_barplot,
-         edge_panel = function(ctreeobj, ...) { function(...) invisible() }, tnex = 1 )
+<<ctree-glaucoma, out.width = "8cm", out.height = "5.5cm", out.extra = "trim = 0cm 0cm 0cm 0cm",  fig.show = "hold", fig.cap = "Conditional tree for Glaucoma classification", fig.width = 14, out.width = "14cm", out.height = "8cm">>=
+plot(cond_tree)
 @ 
  
-<<ctree-glaucoma-text, echo = FALSE>>=
-print(cond_tree@tree)
-@ 
 
 
-<<rpart-glaucoma, out.width = "7cm", out.extra = "trim = 0cm 0cm 0cm 0cm", fig.show = "hold">>=
-rpart.plot(classic_tree, cex = 1.5)
+<<rpart-glaucoma, out.width = "7cm", out.extra = "trim = 0cm 0cm 0cm 0cm", fig.show = "hold", fig.cap = "CART tree for Glaucoma classification", fig.width = 14, out.width = "14cm", fig.height = "8m">>=
+plot(as.party(classic_tree), cex = 1.5)
 @
 
+
+Like in the regression example, the tree grown with CART and conditional inference are structurally different. The measurement \textit{vari} which is used for the first split in the conditional tree (Figure \ref{fig:ctree-glaucoma}) is not even used for any split in the CART tree (Figure \ref{fig:rpart-glaucoma}. Interestingly \citet{hothorn2006unbiased} show, that the predictive accuracy of both approaches are very similar. 
 
