@@ -55,11 +55,11 @@ For regression and the identitiy function for the influence function $h$, the st
 \(n_A\): Number of observations in partition $A$ \\
 \(\bar{Y}_A\): Mean of $Y$ in $A$  
 }
-\[\mathbf{T}_{j*}^A(\mathcal{L}_n, \mathbf{w}) = \sum\limits_{i = 1}^n w_i I(X_{ji} \in A)\cdot Y_i  = \sum\limits_{i: x_{ji} \in A} Y_i  = n_A \bar{Y}_A\]
-\[\mu_{j*}^A = \sum\limits_{i=1}^n w_i I(X_{ji} \in A) \cdot \frac{1}{n_{node}} \sum\limits_{i=1}^n w_i Y_i = n_A \bar{Y}_{node}\]
+\[\mathbf{T}_{j*}^A(\mathcal{L}_n, \mathbf{w}) = \sum\limits_{i = 1}^n w_i I(X_{j*i} \in A)\cdot Y_i  = \sum\limits_{i: x_{j*i} \in A} Y_i  = n_A \bar{Y}_A\]
+\[\mu_{j*}^A = \sum\limits_{i=1}^n w_i I(X_{j*i} \in A) \cdot \frac{1}{n_{node}} \sum\limits_{i=1}^n w_i Y_i = n_A \bar{Y}_{node}\]
 \begin{align*}
-  \Sigma_{j*}^A &= \frac{n_{node}}{n_{node} - 1} \frac{1}{n_{node}} \sum\limits_{i=1}^n w_i (Y_i - \bar{Y}_{node})^2 \cdot \sum\limits_{i=1}^n w_i I(X_{ji} \in A)^2 \\
-  & - \frac{1}{n_{node} - 1}  \frac{1}{n_{node}}\sum\limits_{i=1}^n w_i (Y_i - \bar{Y}_{node})^2 \cdot \left( \sum\limits_{i=1}^n w_i I(X_{ji} \in A)\right)^2\\
+  \Sigma_{j*}^A &= \frac{n_{node}}{n_{node} - 1} \frac{1}{n_{node}} \sum\limits_{i=1}^n w_i (Y_i - \bar{Y}_{node})^2 \cdot \sum\limits_{i=1}^n w_i I(X_{j*i} \in A)^2 \\
+  & - \frac{1}{n_{node} - 1}  \frac{1}{n_{node}}\sum\limits_{i=1}^n w_i (Y_i - \bar{Y}_{node})^2 \cdot \left( \sum\limits_{i=1}^n w_i I(X_{j*i} \in A)\right)^2\\
   & = \frac{1}{n_{node} -1} \sum\limits_{i \in node} (Y_i - \bar{Y}_{node})^2 n_A \left(1 - \frac{n_A}{n_{node}}\right) \\
     & = Var(Y_{node}) \cdot Var(Z)\\
 \end{align*}
