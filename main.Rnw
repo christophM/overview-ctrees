@@ -39,7 +39,7 @@ opts_knit$set(child.path = "./input/")
 @ 
 
 \chapter{Algorithm}
-<<algorithm, child = "algorithm.Rnw">>=
+R<<algorithm, child = "algorithm.Rnw">>=
 @ 
 \section{The test statistic}
 <<test_statistic, child = "test-statistic.Rnw">>=
@@ -65,8 +65,6 @@ opts_knit$set(child.path = "./input/")
 <<glaucoma, child = "glaucoma.Rnw">>=
 @ 
 
-<<best-split-classification, child = "best-split-classification.Rnw">>=
-@ 
 
 %% \chapter{Other scales}
 

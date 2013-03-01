@@ -11,4 +11,4 @@
 figure/
 # ignore temporary files
 *~
-./tufte-latex-3.5.0/*
+tufte-latex-3.5.0/
