@@ -1,14 +1,14 @@
-\citet{hothorn2006unbiased} use the following test statistic which is derived from \citet{strasser}
+\citet{hothorn2006unbiased} use the following test statistic which is derived from \citet{strasser}:
 \[\mathbf{T}_j(L_n, w) = vec \left( \sum\limits_{i = 1}^{n} w_i g_j (X_{ij}) h(Y_i, (Y_1, ..., Y_n))^T \right) \in \mathbb{R}^{p_j q}\] \\
-It may look difficult in the first place, but it can be broken down to the following: 
-\begin{itemize}
-\item $vec()$ The core of the test statistic can be a matrix. In this case $vec()$ - Operator vectorizes the matrix
-\item $\sum$ The test statistic is a sum over all observations
-\item $w$ I lied: Not all observations, because observations which are not in the current partition will get the weight  $w = 0$ and otherwise
+It may look difficult in the first place, but it can be broken down to the following parts: 
+\begin{description} \itemsep0.8pt
+\item[$vec()$] The core of the test statistic can be a matrix. In this case $vec()$ - operator vectorizes the matrix
+\item[$\sum\limits_{i=1}^n$] The test statistic is a sum over all observations.
+\item[$w$] Observations which are not in the current partition will get the weight  $w = 0$ and otherwise
   $w = 1$. This ensures us, that only the data in the current node is in focus. 
-\item $g_j$ A transformation of the j-th covariate $X_j$. Transformation depends on scale of the covariate
-\item $h$ Influence function. Transformation of the response $Y$.
-\end{itemize}
+\item[$g_j$] A transformation of the j-th covariate $X_j$. Transformation depends on scale of the covariate.
+\item[$h$] Influence function. Transformation of the response $Y$.
+\end{description}
 The test statistic has an expectation and variance, which are also derived by the framework from \citet{strasser}:  
 \begin{align*} 
   \mu_j & = \mathbb{E}(\mathbf{T}_j(\mathcal{L}_n, \mathbf{w})| S(\mathcal{L}_n, \mathbf{w}))  =
@@ -28,6 +28,6 @@ The test statistic has an expectation and variance, which are also derived by th
 \mathbb{V}(h|S(\mathcal{L}_n, \mathbf{w})) &= \mathbf{w.}^{-1} \sum\limits_{i} w_i (h(\mathbf{Y}_i, (\mathbf{Y}_1, \dots, \mathbf{Y}_n)) 
 - \mathbb{E}(h|S(\mathcal{L}_n, \mathbf{w})))  \\ & (h(\mathbf{Y}_i, (\mathbf{Y}_1, \dots, \mathbf{Y}_n)) - \mathbb{E}(h|S(\mathcal{L}_n, \mathbf{w})))^T \\
 \end{align*}
-Thus we can standardize the linear tests statistic: 
- \(c(\mathbf{t}, \mu, \Sigma) = \max_{k = 1, \dots, pq} \left| \frac{\left({\mathbf{t} - 
-  \mathbf{\mu}}\right)_k}{\sqrt{(\Sigma)_{kk}}}\right|\)  
+For the permutation tests the standardized version of the test statistic $T$ is used: 
+\[c(\mathbf{t}, \mu, \Sigma) = \max_{k = 1, \dots, pq} \left| \frac{\left({\mathbf{t} - 
+  \mu}\right)_k}{\sqrt{(\Sigma)_{kk}}}\right|\]
