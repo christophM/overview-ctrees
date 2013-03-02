@@ -1,5 +1,5 @@
 Permutation tests\sidenote{Synonyms are: exact tests, randomization tests, re-randomization tests}
-are a special class of non-parametric tests\citep{permutation}.
+are a special class of non-parametric tests.
 In contrast to parametric tests, there is no distribution assumption for the data. The philosophy of permutation tests 
 is, that under the null hypothesis of independence, the pairs of $(Y_i, X_i)$ are exchangeable (which as well is required to perform a classic permutation test). That means we can obtain the distribution of a test statistic (under the assumption of independence) by calculating the test statistic for all possible permutation of $Y$ and $X$. The significance value $p$ is obtained by locating the observed statistic in the distribution. 
 
