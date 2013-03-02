@@ -102,13 +102,13 @@ cond_tree <- ctree(Class ~ ., data = GlaucomaM)
 classic_tree <- rpart(Class ~ ., data = GlaucomaM)
 @ 
 
-<<ctree-glaucoma, out.width = "8cm", out.height = "5.5cm", out.extra = "trim = 0cm 0cm 0cm 0cm",  fig.show = "hold", fig.cap = "Conditional tree for Glaucoma classification", fig.width = 14, out.width = "14cm", out.height = "8cm">>=
+<<ctree-glaucoma, out.width = "8cm",  out.extra = "trim = 0cm 0cm 0cm 0cm",  fig.show = "hold", fig.cap = "Conditional tree for Glaucoma classification", fig.width = 14, out.width = "14cm", out.height = "8cm">>=
 plot(cond_tree)
 @ 
  
 
 
-<<rpart-glaucoma, out.width = "7cm", out.extra = "trim = 0cm 0cm 0cm 0cm", fig.show = "hold", fig.cap = "CART tree for Glaucoma classification", fig.width = 14, out.width = "14cm", fig.height = "8m">>=
+<<rpart-glaucoma, out.width = "7cm", out.extra = "trim = 0cm 0cm 0cm 0cm", fig.show = "hold", fig.cap = "CART tree for Glaucoma classification", fig.width = 14, out.width = "14cm", out.height = "8cm">>=
 plot(as.party(classic_tree), cex = 1.5)
 @
 
