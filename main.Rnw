@@ -16,6 +16,7 @@
 
 <<mysetup, include = FALSE>>=
 opts_knit$set(child.path = "./input/")
+opts <- knit$set(stop_on_error=2L)
 @
 % ---------------------------------------------------------------
 \frontmatter 
