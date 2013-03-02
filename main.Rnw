@@ -21,26 +21,29 @@ opts <- knit$set(stop_on_error=2L)
 % ---------------------------------------------------------------
 \frontmatter 
 \include{input/title} 
+\begin{normalsize}
 \tableofcontents 
+\end{normalsize}
 % ---------------------------------------------------------------
+
 \mainmatter 
 
 
 
 
 
-\chapter{Recursive Partitioning}
+\chapter{Recursive partitioning}
 <<introduction, child = "introduction.Rnw">>=
 @ 
 \chapter{Motivation}
-<<problems, child = "motivation.Rnw">>=
+<<problems, child = "motivation.Rnw">>= 
 @ 
 \chapter{Recursive partitioning by conditional inference}
 <<ctrees, child = "ctrees.Rnw">>=
 @ 
 
-\chapter{Algorithm}
-R<<algorithm, child = "algorithm.Rnw">>=
+\chapter*{Algorithm}
+<<algorithm, child = "algorithm.Rnw">>=
 @ 
 \section{The test statistic}
 <<test_statistic, child = "test-statistic.Rnw">>=
@@ -55,13 +58,13 @@ R<<algorithm, child = "algorithm.Rnw">>=
 <<repeat4, child = "repeat.Rnw">>=
 @ 
 
-\chapter{Continuous Regression: Example bodyfat}
+\chapter{Regression example: bodyfat}
 \label{chap:regression}
 <<bodyfat, child = "bodyfat.Rnw">>=
 @ 
 
 
-\chapter{Classification: Example glaucoma}
+\chapter{Classification example: glaucoma}
 \label{chap:classification}
 <<glaucoma, child = "glaucoma.Rnw">>=
 @ 
