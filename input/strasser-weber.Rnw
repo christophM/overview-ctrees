@@ -9,25 +9,25 @@ It may look difficult in the first place, but it can be broken down to the follo
 \item[$g_j$] A transformation of the j-th covariate $X_j$. Transformation depends on scale of the covariate.
 \item[$h$] Influence function. Transformation of the response $Y$.
 \end{description}
-The test statistic has an expectation and variance, which are also derived by the framework from \citet{strasser}:  
+Expectation and variance of the test statistic are derived by the framework from \citet{strasser}:  
 \begin{align*} 
   \mu_j & = \mathbb{E}(\mathbf{T}_j(\mathcal{L}_n, \mathbf{w})| S(\mathcal{L}_n, \mathbf{w}))  =
   vec \left( \left(\sum\limits_{i=1}^n w_i g_j (X_{ji})\right) 
   \mathbb{E}(h|S(\mathcal{L}_n, \mathbf{w}))^T \right) \\
   \Sigma_j  &= \mathbb{V}(\mathbf{T}_j(\mathcal{L}_n, \mathbf{w})| S(\mathcal{L}_n, \mathbf{w}))  \\
   & = 
-  \frac{\mathbf{w.}}{\mathbf{w.} - 1} \mathbb{V}( h| S(\mathcal{L}_n, \mathbf{w})) \otimes 
+  \frac{n_{node}}{n_{node} - 1} \mathbb{V}( h| S(\mathcal{L}_n, \mathbf{w})) \otimes 
   \left( \sum\limits_i w_i g_j (X_{ji}) \otimes w_i g_j (X_{ji})^T\right) \\ 
-  & - \frac{1}{\mathbf{w.} - 1} \mathbb{V}( h| S(\mathcal{L}_n, \mathbf{w})) \otimes \left( \sum\limits_i w_i g_j (X_{ji})\right) \otimes
+  & - \frac{1}{n_{node} - 1} \mathbb{V}( h| S(\mathcal{L}_n, \mathbf{w})) \otimes \left( \sum\limits_i w_i g_j (X_{ji})\right) \otimes
   \left( \sum\limits_i w_i g_j (X_{ji}) \right) ^T  \\
-  \mathbf{w.} &= \sum\limits_{i=1}^n w_i  \\
+  n_{node} &= \sum\limits_{i=1}^n w_i  \\
 \end{align*}
 
 \begin{align*}
-\mathbb{E}(h|S(\mathcal{L}_n, \mathbf{w})) &= \mathbf{w.}^{-1}\sum\limits_i  w_i h(\mathbf{Y}_i, (\mathbf{Y}_1, \dots, \mathbf{Y}_n)) \in \mathbb{R}^q \\
-\mathbb{V}(h|S(\mathcal{L}_n, \mathbf{w})) &= \mathbf{w.}^{-1} \sum\limits_{i} w_i (h(\mathbf{Y}_i, (\mathbf{Y}_1, \dots, \mathbf{Y}_n)) 
+\mathbb{E}(h|S(\mathcal{L}_n, \mathbf{w})) &= n_{node}^{-1}\sum\limits_i  w_i h(\mathbf{Y}_i, (\mathbf{Y}_1, \dots, \mathbf{Y}_n)) \in \mathbb{R}^q \\
+\mathbb{V}(h|S(\mathcal{L}_n, \mathbf{w})) &= n_{node}^{-1} \sum\limits_{i} w_i (h(\mathbf{Y}_i, (\mathbf{Y}_1, \dots, \mathbf{Y}_n)) 
 - \mathbb{E}(h|S(\mathcal{L}_n, \mathbf{w})))  \\ & (h(\mathbf{Y}_i, (\mathbf{Y}_1, \dots, \mathbf{Y}_n)) - \mathbb{E}(h|S(\mathcal{L}_n, \mathbf{w})))^T \\
 \end{align*}
-For the permutation tests the standardized version of the test statistic $T$ is used: 
+For the permutation tests, the standardized version of the test statistic $T$ is used: 
 \[c(\mathbf{t}, \mu, \Sigma) = \max_{k = 1, \dots, pq} \left| \frac{\left({\mathbf{t} - 
   \mu}\right)_k}{\sqrt{(\Sigma)_{kk}}}\right|\]

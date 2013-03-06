@@ -13,7 +13,7 @@ An appropriate function to capture only the difference in the partition, the tra
 This results in the statistic 
 \[c_{max}(\mathbf{t}, \mu, \Sigma) = max_{k} \left| \frac{(\mathbf{t}^A-\mu)_k}{\sqrt{(\Sigma)_{kk}}}\right|\]
 Note that the test statistic does not depend on the transformation $g_{j*}$ of $X_{j*}$. The scale of the chosen covariate $X_{j*}$ is
-regarded in another way: The possible partitions $A$ and $A^C$ depend on the scale of $X_{j*}$. For example if $X_{j*}$ is categorial the different partitions $A$ are combinations of the different categories. A continuous covariate will be searched for a split on the real line. Ordinal covariates will be searched for splits where the two resulting partitions are a result of a inbetween the ordered categories. 
+regarded in another way: The possible partitions $A$ and $A^C$ depend on the scale of $X_{j*}$. For example if $X_{j*}$ is categorial the different partitions $A$ are combinations of the different categories. A continuous covariate will be searched for a split on the real line. Ordinal covariates will be ordered by categories and then searched for the split.
   
 We search the partition $A$ which maximizes $c$:\marginnote{\includegraphics[width = 5cm]{images/partition.png}}
 \[A^{\ast} = argmax_{A} c(t_{j*}^A, \mu_{j*}^A, \Sigma_{j*}^A)\]

@@ -1,7 +1,7 @@
 Permutation tests\sidenote{Synonyms are: exact tests, randomization tests, re-randomization tests}
 are a special class of non-parametric tests.
 In contrast to parametric tests, there is no distribution assumption for the data. The philosophy of permutation tests 
-is, that under the null hypothesis of independence, the pairs of $(Y_i, X_i)$ are exchangeable (which as well is required to perform a classic permutation test). That means we can obtain the distribution of a test statistic (under the assumption of independence) by calculating the test statistic for all possible permutation of $Y$ and $X$. The significance value $p$ is obtained by locating the observed statistic in the distribution. 
+is, that under the null hypothesis of independence, the pairs of $(Y_i, X_i)$ are exchangeable. Exchangeability is not only the philosophy behind, but a requirement to perform a permutation test. That means, we can obtain the distribution of a test statistic (under the assumption of independence) by calculating the test statistic for all possible permutations of $Y$ and $X$. The significance value $p$ is obtained by locating the observed statistic in the distribution. 
 
 %% The classic example is the comparison of two groups of patients, which received either medication A or B (let's call the group label $X$). The success of the medication can be measured by a blood value $Y$. 
 %% The question to answer is, whether the type of  medication leads to different $Y$. This can be formulated as the a null hypothesis of 
@@ -12,7 +12,7 @@ is, that under the null hypothesis of independence, the pairs of $(Y_i, X_i)$ ar
 %% distribution of the test statistic and reject the null hypothesis at the tails of the distribution, where the probability that the measured result can happen under $H_0$ undercuts a beforehand specified $\alpha \in [0, 1]$. 
 %% PICS AND NUMBERS.  DELETE EXAMPLE?
 
-One problem of permutation tests is, that the number of possible permutations grows very fast with a larger number $n$ of observations. 
-The number of permutations is $n!$ and the calculation time for all possible test statistics is for most problems unreasonably long. 
+One problem of permutation tests is that the number of possible permutations grows very fast with a larger number $n$ of observations. 
+The number of permutations is $n!$ and the calculation time for all possible test statistics is for many problems unreasonably long. 
 The trick here is to draw just a number of random permutation to approximate the distribution of the test statistic. This is called Monte Carlo method. 
 

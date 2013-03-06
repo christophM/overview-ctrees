@@ -13,7 +13,7 @@ influence function $h$ and the transformation function $g_j, \quad j = 1, \dots,
 the variables will not be transformed at all.  \\
 Thus: 
 \[h = \mathbf{Y}_i \quad \text{and} \quad g_j = \mathbf{X}_j \quad j = 1, \dots, m\]
-This yields following not-standardized test statistic:\sidenote{The formulation $\sum\nolimits_{i \in node}$ means sum over all observations in the node (= partition). This is the same as the sum over all observations with additional weights, because only observations in the current node have weigth $w = 1$, the other have weights $w = 0$} 
+This yields following not-standardized test statistic:\sidenote{The formulation $\sum\nolimits_{i \in node}$ means sum over all observations in the node (= partition). This is the same as the sum over all observations with additional weights, because only observations in the current node have weigth $w = 1$, the others have weights $w = 0$} 
 
 \[\mathbf{T}_{j}(\mathcal{L}_n, \mathbf{w}) = \sum\limits_{i=1}^n w_i \mathbf{X}_{ji} \mathbf{Y}_i  = \sum\limits_{i \in node} \mathbf{X}_{ji} \mathbf{Y}_i\]
 The next step is to standardize the test statistic:\sidenote{Definitions of $\mu$ and $\Sigma$ can be found on page \pageref{chap:strasser}}
@@ -66,7 +66,7 @@ For regression and the identitiy function for the influence function $h$, the st
 
 with
 \[Z \sim B(n_{node}, \pi = \frac{n_A}{n_{node}})\]
-Can be interpretated as the probability that z observations would be assigned to $A$ if the process of aissigning would be random with probability $\frac{n_A}{n_{node}}$. 
+Can be interpretated as the probability that z observations would be assigned to $A$ if the process of assigning would be random with probability $\frac{n_A}{n_{node}}$. 
 %% Is maximal for \(n_A = \frac{n_{node}}{2}\). 
 %% The closer \(\frac{n_A}{n_{node}}\) to 0.5 the bigger is $c$ (assuming $Y_A$ stays the same).
 Thus the standardized test statistic is: 
@@ -78,9 +78,7 @@ The partition which maximizes the above expression will be chosen. Maximizing $c
 
 
 \subsection*{R-Code}
-The data set for the example is available in the mboost (\citet{mboost}). 
-In addition to the response DEXfat it contains the nine body measurements. 
-The data set can be loaded using the \lstinline{data()} function: 
+The data set can be loaded from mboost (\citet{mboost}) package using the \lstinline{data()} function: 
 <<bodyfat-data>>=
 data(bodyfat, package = "mboost")
 @ 
@@ -89,16 +87,13 @@ The conditional tree algorithm is implemented in the party package (\citet{hotho
 The usage is similiar to the \lstinline{lm()}-function, with the formula interface. 
 The formula \lstinline{DEXfat ~ . } means that the tree should model the response DEXfat (bodyfat measurement) 
 depending on all available covariates. 
-<<bodyfat-cond-model, message = FALSE>>=
+<<bodyfat-plot-ctree, out.width = "12cm", out.extra = "trim = 3cm 0cm 0cm 1cm", fig.width = 14, fig.height = 8, cache = FALSE, fig.cap = "Conditional tree for bodyfat data", message = FALSE>>=
 library("party")
 ## fit a conditional tree
 cond_tree <- ctree(DEXfat ~ ., data = bodyfat)
-@
-The result is a tree (Figure \ref{fig:bodyfat-plot-ctree}) with six terminal nodes (five splits). The variable chosen for the first split is \lstinline{hipcirc}, the circumference of the hip in cm. If it is bigger than 108cm the next measurement to look at is the breadth of the knee (\lstinline{kneebreadth}). If the breadth is smaller than 10.6 cm the estimated is 39.7, which is equal to the mean in this terminal node. 
-<<bodyfat-plot-ctree, out.width = "12cm", out.extra = "trim = 3cm 0cm 0cm 1cm", fig.width = 14, fig.height = 8, cache = FALSE, fig.cap = "Conditional tree for bodyfat data">>=
 plot(cond_tree)
 @ 
-The CART algorithm gives us a different tree (Figure \ref{fig:bodyfat-rpart}). The variable for the first splits are different, CART uses the circumference of the waist while conditional trees algorithm uses the same measurement of the hip. There is even a covariate (kneebreadth) which is used by the conditional trees algorithm, but was not used by CART algorithm. The resulting trees are structurally different. 
+The result is a tree (Figure \ref{fig:bodyfat-plot-ctree}) with six terminal nodes (five splits). The variable chosen for the first split is \lstinline{hipcirc}, the circumference of the hip in cm. If it is bigger than 108cm the next measurement to look at is the breadth of the knee (\lstinline{kneebreadth}). If the breadth is smaller than 10.6 cm the estimated is 39.7, which is equal to the mean in this terminal node. The interpretation for the other nodes is equivalent. 
 <<bodyfat-rpart, out.extra  = "trim = 0cm 4cm 0cm 4cm", cache = FALSE, fig.width = 14, fig.height = 8, cache = FALSE, fig.cap = "CART tree for bodyfat data", out.width = "14cm">>=
 library("rpart")
 library("partykit")
@@ -106,3 +101,5 @@ cart <- rpart(DEXfat ~ ., data = bodyfat)
 plot(as.party(cart))
 @
 
+
+The CART algorithm gives us a different tree (Figure \ref{fig:bodyfat-rpart}). In comparison, CART uses the circumference of the waist for the first split while the conditional trees algorithm uses the same measurement of the hip. There is even a covariate (kneebreadth) which is used by the conditional trees algorithm, but not used by the CART algorithm. The resulting trees are structurally different. 

@@ -1,13 +1,13 @@
 All decisions in steps 1.) and 2.) of the algorithm are embeded in hypothesis tests. These are done with permutation tests (conditional inference).
 Also step 3.) makes use of the following test statistic, although nothing is tested. 
 The test statistic from \citet[page 4]{hothorn2006unbiased}:
-\sidenote{This test statistic might look difficult in the first place, because it is a very general formulation. When looking at particular examples the formula becomes very friendly and seems more natural. This can be seen in the two included examples for regression \pageref{chap:regression} and classification \pageref{chap:classification} 
-At this point you can accept the test statistic as it is or you can read more in the appendix (page \pageref{chap:strasser}) about it. }
+\sidenote{This test statistic might look difficult in the first place, because it is a very general formulation. When looking at particular examples the formula becomes very friendly and seems more natural. This can be seen in the two included examples for regression \pageref{chap:regression} and classification \pageref{chap:classification} }
 \[\mathbf{T}_j(L_n, w) = vec \left( \sum\limits_{i = 1}^{n} w_i g_j (X_{ij}) h(Y_i, (Y_1, ..., Y_n))^T \right) \in \mathbb{R}^{p_j q}\] 
-is derived from  \citet{strasser} and can be used to test if a response $Y$ and a covariate $X$ are independent.  
+is derived from  \citet{strasser} and can be used to test if a response $Y$ and a covariate $X$ are independent. The test statistic depends on the learning sample $L_n$, weights $w$, influence function $h$ and transformation $g$\sidenote{read more on page \pageref{chap:strasser}}.
 This test statistic is standardized before it is used. The test statistic $T$ is not only standardized but is also mapped to a scalar value. In order to map the (possible) vector $T$ to a scalar value, one obvious choice 
-is to take the maximum of the standardized test statistic. This yields the following standardized linear test statistic: \sidenote{see page \pageref{chap:strasser} for the calculation of $\mu$ and $\Sigma$ of $T$}
+is to take the maximum of the standardized test statistic. This yields the following standardized linear test statistic: 
 
  \[c(\mathbf{t}, \mu, \Sigma) = \max_{k = 1, \dots, pq} \left| \frac{\left({\mathbf{t} - \mu}\right)_k}{\sqrt{(\Sigma)_{kk}}}\right|\]  
+The variable $t$ is an actual value of the test statistic $T$, $\mu$ is the expected value of $T$ under independence and $(\Sigma)_{kk}$ is the k-th diagonal entry of the covariance matrix\sidenote{see page \pageref{chap:strasser} for the calculation of $\mu$ and $\Sigma$ of $T$}. 
 Thus $c$ is the test statistic which is calculated for each permutation. Extreme values for c for the observed data compared to the permutations will lead to the rejection of the null hypothesis of independence. 
  

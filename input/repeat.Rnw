@@ -11,5 +11,5 @@ The three steps: stop criteria, variable selection and best split search are rep
   \end{tikzpicture}
   }
 
-If there is no significant dependency of the response and any covariate, than there would be no split at all, every observation is in the same partition. \\
-The user has to specify the significance level $\alpha$, which is the significance level for each global null hypothesis. The value $\alpha$ can also be seen as a tuning parameter for the trees. Low values yield smaller and larger values larger trees. Because a larger $\alpha$ leads to recejecting the null hypothesis more frequently and thus splitting more frequently. 
+If there is no significant dependency of the response and any covariate, there would be no split at all and therefore every observation would in the same partition. \\
+The user has to specify the significance level $\alpha$, which is the significance level for each global null hypothesis. The value $\alpha$ can also be seen as a tuning parameter for the trees. Low values yield smaller and larger values larger trees, because a larger $\alpha$ leads to recejecting the null hypothesis more frequently and thus splitting more frequently. 

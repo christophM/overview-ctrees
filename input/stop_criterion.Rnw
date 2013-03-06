@@ -1,7 +1,7 @@
 The first step in each partition is to test if the partition should be split at all. \marginnote{\includegraphics[width = 5cm]{images/global_hzero.png}} This is formulated as a statistical hypothesis test with the global\sidenote{Note that global means global for the partition but not for the whole tree}  null hypothesis of independence. It is composed of many (local) null hypotheses of independence between the response $Y$ and each covariate $X_j$, which can be reformulated in terms of the marginal distribution of $Y$. If $Y$ and $X_j$ are independent, the distribution of $Y$ given $X_j$ is the same as the marginal distribution of $Y$. Or more formally: 
 \[H_0: \text{The response } Y \text{ is independent from all covariates } X_j, \quad j \in 1, \dots, m \] 
 \[H_0 = \cap_{j=1}^m H_0^j \text{ and } H_0^j: D(\mathbf{Y}| X_j) = D(\mathbf{Y})\]
-One way to test for such a compound hypothesis is to test each of the $m$ \sidenote{Let $m$ be the number of covariates} hypothesis seperately and to reject the global null hypothesis if one of the covariates and $Y$ are significantly dependent. To overcome the problem of multiple testing a p-value correction has to take place. The whole procedure:  
+One way to test for such a compound hypothesis is to test each of the $m$ \sidenote{Let $m$ be the number of covariates} hypothesis seperately and to reject the global null hypothesis if $Y$ is dependent of at least one of the covariates. To overcome the problem of multiple testing a p-value correction has to take place. The whole procedure:  
 
 \begin{enumerate}
 \item Choose an influence function $h$ depending on scale of $Y$

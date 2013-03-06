@@ -48,13 +48,13 @@ opts <- knit$set(stop_on_error=2L)
 \section{The test statistic}
 <<test_statistic, child = "test-statistic.Rnw">>=
 @ 
-\section{Stop criteria (1) and variable selection (2)}
+\section{Stop criteria and variable selection}
 <<stop_criterion, child = "stop_criterion.Rnw">>=
 @ 
-\section{Splitting criteria (3)}
+\section{Splitting criteria}
 <<best-split, child = "best-split.Rnw">>=
 @ 
-\section{Repeat(4)}
+\section{Repeat}
 <<repeat4, child = "repeat.Rnw">>=
 @ 
 

@@ -1,9 +1,9 @@
-Recursive partitioning is a powerful yet simple tool in predictive and explanatory statistics. \sidenote{For a detailed introduction to trees please read \citet[page 305]{elements}}.
-Models built by partitioning have the shape of decision trees, which makes the approach easy to understand for everyone, without having to understand the algorithm behind. The algorithm partitions the data to reconstruct the relationship between the response variable $Y$ and the covariates matrix $X$. 
+Recursive partitioning is a powerful yet simple tool in predictive and explanatory statistics \sidenote{For a detailed introduction to trees please read \citet[page 305]{elements}}.
+Models built by partitioning have the shape of decision trees, which makes the approach easy to understand for everyone, without having to understand the algorithm behind. The algorithm partitions the data to reconstruct the relationship between the response variable $Y$ and the covariates  $X$. 
 \marginnote{\(Y = f(X) \)} \\
 
 Partitioning can be done with many different approaches and therefore there is a great variety of algorithms to grow trees. 
-They could be categorized into those which can do regression, those which can do classification and those which can do both. 
+They can be categorized into those which do regression, those which do classification and those which do both. 
 Another characteristic is the number of splits per partition step.
 \marginnote{
   \begin{tikzpicture}
@@ -16,4 +16,4 @@ Another characteristic is the number of splits per partition step.
     };
   \end{tikzpicture}
 }There are binary splits, which divide a partition into two new partitions
-and multiway splits which yield more than two partitions. There is even more variety in the philosophy of how to determine which variable to take for the next step and where to split it. Also the stopping criterion, when the tree is not grown any more, differs for the algorithms. But they all have the tree like structure in common. The presented algorithm is called ``Recursive binary partitioning by conditional inference'' \sidenote{Will be called ``Conditional tree algorithm'' throughout this paper for simplicity}. It is an algorithm for recursive partitioning algorithm, with binary splits and all of it's split decisions are based on statistical hypothesis tests. Their creators are Torsten Hothorn, Kurt Hornik and Achim Zeileis. This work is mainly based on \citet{hothorn2006unbiased}.
+and multiway splits which yield more than two partitions. There is even more variety in the philosophy of how to determine which variable to take for the next step and where to split it. Also the stopping criterion, when the tree is not grown any more, differs for the algorithms. One the they all have in common is the tree like structure. The presented algorithm is called ``Recursive binary partitioning by conditional inference'' \sidenote{Will be called ``Conditional tree algorithm'' throughout this paper for simplicity}. It is an algorithm for recursive partitioning algorithm, with binary splits and all of it's split decisions are based on statistical hypothesis tests. The algorithm covers not only regression and classification, but even more complex scales like ordinal regression for example. Their creators are Torsten Hothorn, Kurt Hornik and Achim Zeileis. This work is mainly based on \citet{hothorn2006unbiased}.

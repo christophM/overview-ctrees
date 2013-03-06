@@ -4,16 +4,16 @@ The data for this illustration is available in the \lstinline{ipred} package (\c
 
 \subsection*{Data set}
 The glaucoma data set contains eye laser scanning of both healthy persons and persons with glaucoma.\marginnote{n = 196}
-Glaucoma is an eye disease which in worst case can lead to blindness. 
-If the person is healthy the response variable \lstinline{Class} is zero else if the person suffers from glaucmoa, one. The subject is to 
-predict if a person has the glaucoma disease or not, based on different laser scanning measurements. .\marginnote{Predict glaucoma based on eye measurements}
+Glaucoma is an eye disease which in worst case leads to blindness. 
+If the person is healthy the response variable \lstinline{Class} equals zero else if the person suffers from glaucoma it has the value one. The subject is to 
+predict if a person has the glaucoma disease or not, based on different laser scanning measurements.\marginnote{Predict glaucoma based on eye measurements}
 Measured are different volumes and surfaces of the eye
 
 \subsection*{Test statistic}
 The test statistic is different to the one from the regression example. The transformation $g$ for the covariates stays the same, while
-the influence function $h(Y)$ changes, as the scale of $Y$ is different in the classification example. 
-Instead of using the identity for $h$, the influence function is a vector with the same dimensionality as the number of categories, two-dimensional in the glaucoma example. The vector $h(Y_i)$ equals one at the position $k$ when observation $i$ is in cateogry $k$, and zeros at the other positions. 
-The Glaucoma data set knows two classes, glaucoma and normal. Thus if person $i$ has glaucoma, the vector $h(Y_i)$ is $(0, 1)^T$. 
+the influence function $h(Y)$ is different, as the scale of $Y$ is different in the classification example. 
+Instead of using the identity for $h$, the influence function is a vector with the same dimensionality as the number of categories, two-dimensional in the glaucoma example. The vector $h(Y_i)$ equals one at the position $k$ when observation $i$ is in the particular category, and zeros at the other positions. 
+The glaucoma data set has two classes, glaucoma and normal. Thus if person $i$ has glaucoma, the vector $h(Y_i)$ is $(0, 1)^T$. 
 \[h = e_J(\mathbf{Y}_i) = \begin{pmatrix} Y_{G,i} \\ Y_{N, i} \end{pmatrix} = 
 \begin{cases} (1, 0)^T & \text{Glaucoma} \\  (0, 1)^T & \text{normal} \end{cases}   
 \quad \text{and} \quad
@@ -52,14 +52,14 @@ V_{node}(h) & = \frac{1}{n_{node}} \sum\limits_{i \in node}
 \end{pmatrix} 
 \\
 \end{align*}
-For the standardized test statistic only the diagonal elements of the covariance matrix are needed:
+For the standardized test statistic only the diagonal elements of the covariance matrix are needed, because only the variance within the classes are considered: 
 \begin{align*}
 (\Sigma_j)_{kk} & = \frac{1}{n_{node} - 1} \sum\limits_{i \in node} (Y_{Class} - \bar{Y}_{Class})^2 \sum\limits_{i \in node} (X_{ji} - \bar{X}_{ji})^2 \quad \text{Class} \in \{G, N\}  \\
   & =
 \underbrace {n_{node} \bar{Y}_{Class} (1 - \bar{Y}_{class}) }_{\widehat{Var}(Y_{Class, node})}
 \underbrace {\frac{1}{n_{node} - 1}\sum\limits_{i \in node} \left( X_{ji} - \bar{X}_{j, node} \right)^2}_{\widehat{Var}(X_{j, node})} \\
 \end{align*}
-And finally the standardized test statistic: 
+And finally the standardized test statistic is denoted as: 
 \[ c = \frac{n_{Class} \bar{X}_{j, Class} - n_{Class} \bar{X}_{j, node}}{\sqrt{(\Sigma)_{kk}}} = 
 n_{Class} \frac{(\bar{X}_{j, Class} - \bar{X}_{j, node})}{\sqrt{\widehat{Var}(Y_{Class, node})\widehat{Var}(X_{j, node})) }}\]
 This standardized test statistic has a very vivid interpretation. The numerator is the difference between the observed mean of the covariate $X_j$ for all the observations in the node which are in the class we are looking at and the mean of $X_j$ in the whole node. We expect $\bar{X}_{j, Class}$ to be very similar to 
@@ -94,15 +94,15 @@ of observations in A with glaucoma (or normal) under complete randomness.
 
 
 \subsection*{R-Code}
-<<glaucoma-rcode, message = FALSE, out.width = "7cm">>=
+
+
+
+<<ctree-glaucoma, out.width = "8cm",  out.extra = "trim = 0cm 0cm 0cm 0cm",  fig.show = "hold", fig.cap = "Conditional tree for Glaucoma classification", fig.width = 14, out.width = "14cm", out.height = "8cm", message = FALSE>>=
 library("rpart")
 library("party")
 data("GlaucomaM", package = "ipred")
 cond_tree <- ctree(Class ~ ., data = GlaucomaM)
 classic_tree <- rpart(Class ~ ., data = GlaucomaM)
-@ 
-
-<<ctree-glaucoma, out.width = "8cm",  out.extra = "trim = 0cm 0cm 0cm 0cm",  fig.show = "hold", fig.cap = "Conditional tree for Glaucoma classification", fig.width = 14, out.width = "14cm", out.height = "8cm">>=
 plot(cond_tree)
 @ 
  

@@ -20,8 +20,7 @@ See also the original formulation in \citet[Chapter 2 and 3]{hothorn2006unbiased
 \end{fullwidth} 
 \vspace{0.5cm}
 The algorithm starts with the whole data set and tests if it should be splitted. If the null hypothesis is rejected the variable with the strongest
-association with the response is chosen and the data set will be split into two partitions. The steps will be repeated within both
+association with the response is chosen and the partition is splitted into two new partitions. The steps will be repeated within both
 of the new partitions.\sidenote{That's why it is called ``recursive'' partitioning''} Covariates chosen for a split can be chosen again later (only in the case of a bivariate covariate it doesn't work). 
-First if in all partitions the global null hypothesis of independence cannot be rejected (Stop criterion) the tree does not grow any
-further and the algorithm stops. 
+The tree stops to grow, if in all partitions the global null hypothesis of independence cannot be rejected (stop criterion).
 The next sections describe in detail how the single steps work and especially how permutation tests are applied. 
