@@ -1,4 +1,4 @@
-The three steps: stop criteria, variable selection and best split search are repeated until in every partition, which is at the end of the tree (so called terminal node) the null hypothesis of independency cannot be rejected anymore.
+The three steps: stop criteria, variable selection and best split search are repeated until in every partition, which is at the end of the tree (so called terminal node) the null hypothesis of independence cannot be rejected anymore.
 \marginnote{
   \begin{tikzpicture}
     \tikzstyle{every node}=[rectangle,draw]
@@ -12,4 +12,4 @@ The three steps: stop criteria, variable selection and best split search are rep
   }
 
 If there is no significant dependency of the response and any covariate, there would be no split at all and therefore every observation would in the same partition. \\
-The user has to specify the significance level $\alpha$, which is the significance level for each global null hypothesis. The value $\alpha$ can also be seen as a tuning parameter for the trees. Low values yield smaller and larger values larger trees, because a larger $\alpha$ leads to recejecting the null hypothesis more frequently and thus splitting more frequently. 
+The user has to specify the significance level $\alpha$, which is the significance level for each global null hypothesis. The value $\alpha$ can also be seen as a tuning parameter for the trees. Low values yield smaller and larger values larger trees, because a larger $\alpha$ leads to rejecting the null hypothesis more frequently and thus splitting more frequently. 

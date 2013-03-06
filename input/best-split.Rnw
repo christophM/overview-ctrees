@@ -2,7 +2,7 @@ Steps 1) and 2) of the algorithm are completed. The covariate $X_{j*}$ with the 
 Every covariate (which is not binary) has more than one possible split points. To determine where to split, a criterion which measures the goodness of the split has to be applied. 
 The CART algorithm uses Gini for classification and sum of squares for regression. 
 Both of the criteria could be used by the conditional tree algorithm as well, but the used approach is different. 
-Because of the different types of possible regression- /classification - models (categorial, ordinal, numeric, censored, ...) a more general approach is suitable. 
+Because of the different types of possible regression- /classification - models (categorical, ordinal, numeric, censored, ...) a more general approach is suitable. 
 The solution is again the test statistic derived from \citet{strasser}. 
 A special case of the linear test statistic can be used, the formula is: \[T_{j}^A(L_n, w) = vec \left( \sum\limits_{i=1}^n w_i I(X_{j*i} \in A) \cdot h(Y_i, (Y_1, \dots, Y_n))^T \right)\]
 with $A$ being a possible partition of the current observations and 
@@ -13,7 +13,7 @@ An appropriate function to capture only the difference in the partition, the tra
 This results in the statistic 
 \[c_{max}(\mathbf{t}, \mu, \Sigma) = max_{k} \left| \frac{(\mathbf{t}^A-\mu)_k}{\sqrt{(\Sigma)_{kk}}}\right|\]
 Note that the test statistic does not depend on the transformation $g_{j*}$ of $X_{j*}$. The scale of the chosen covariate $X_{j*}$ is
-regarded in another way: The possible partitions $A$ and $A^C$ depend on the scale of $X_{j*}$. For example if $X_{j*}$ is categorial the different partitions $A$ are combinations of the different categories. A continuous covariate will be searched for a split on the real line. Ordinal covariates will be ordered by categories and then searched for the split.
+regarded in another way: The possible partitions $A$ and $A^C$ depend on the scale of $X_{j*}$. For example if $X_{j*}$ is categorical the different partitions $A$ are combinations of the different categories. A continuous covariate will be searched for a split on the real line. Ordinal covariates will be ordered by categories and then searched for the split.
   
 We search the partition $A$ which maximizes $c$:\marginnote{\includegraphics[width = 5cm]{images/partition.png}}
 \[A^{\ast} = argmax_{A} c(t_{j*}^A, \mu_{j*}^A, \Sigma_{j*}^A)\]

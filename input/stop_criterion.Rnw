@@ -1,20 +1,20 @@
 The first step in each partition is to test if the partition should be split at all. \marginnote{\includegraphics[width = 5cm]{images/global_hzero.png}} This is formulated as a statistical hypothesis test with the global\sidenote{Note that global means global for the partition but not for the whole tree}  null hypothesis of independence. It is composed of many (local) null hypotheses of independence between the response $Y$ and each covariate $X_j$, which can be reformulated in terms of the marginal distribution of $Y$. If $Y$ and $X_j$ are independent, the distribution of $Y$ given $X_j$ is the same as the marginal distribution of $Y$. Or more formally: 
 \[H_0: \text{The response } Y \text{ is independent from all covariates } X_j, \quad j \in 1, \dots, m \] 
 \[H_0 = \cap_{j=1}^m H_0^j \text{ and } H_0^j: D(\mathbf{Y}| X_j) = D(\mathbf{Y})\]
-One way to test for such a compound hypothesis is to test each of the $m$ \sidenote{Let $m$ be the number of covariates} hypothesis seperately and to reject the global null hypothesis if $Y$ is dependent of at least one of the covariates. To overcome the problem of multiple testing a p-value correction has to take place. The whole procedure:  
+One way to test for such a compound hypothesis is to test each of the $m$ \sidenote{Let $m$ be the number of covariates} hypothesis separately and to reject the global null hypothesis if $Y$ is dependent of at least one of the covariates. To overcome the problem of multiple testing a p-value correction has to take place. The whole procedure:  
 
 \begin{enumerate}
 \item Choose an influence function $h$ depending on scale of $Y$
 \item For each covariate $X_j$ do the following:    
   \begin{enumerate}[label = \arabic*), itemsep = 0.3em]
-  \item Choose an apropriate function $g_j$, which depends on the scale of the covariate $X_j$ \sidenote{The functions $h$ and $g_j$ stays the same for each partition, so in theory it is enough to choose them once before the first split}
+  \item Choose an appropriate function $g_j$, which depends on the scale of the covariate $X_j$ \sidenote{The functions $h$ and $g_j$ stays the same for each partition, so in theory it is enough to choose them once before the first split}
   \item Calculate the test statistic $c_{j0}$ for the observed data. 
   \item Permute the observations in the node
   \item Calculate $c$ for all permutations
   \item Calculate the p-values\sidenote{Each $X_j$ gets an own p-value} (number of test statistics $c$, where $|c| > |c_0|$
   \end{enumerate}
 \item Correct p-value for multiple testing\sidenote{Result is the p-value for the global test}
-\item p-value $< \alpha$?\sidenote{$alpha$ is the prespecified confidence level} $\Rightarrow$ reject global $H_0$ and search variable for splitting else don't split.
+\item p-value $< \alpha$?\sidenote{$alpha$ is the a priori specified confidence level} $\Rightarrow$ reject global $H_0$ and search variable for splitting else don't split.
 \end{enumerate}
 
 Assuming the null hypothesis of independence was rejected, then the next step is to find the best variable for the split. 

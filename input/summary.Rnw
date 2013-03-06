@@ -1,6 +1,6 @@
 Conditional inference trees are a statistical approach to recursive partitioning. 
 The underlying theory is embedded in a well defined framework of conditional inference (permutation tests). 
-Unlike most other partitioning algorithms, variable selection and best split search are seperated. 
+Unlike most other partitioning algorithms, variable selection and best split search are separated. 
 The split criterion and the variable selection for the next split are formulated in terms 
 of statistical hypothesis tests. The framework covers a wide range of different scales for $Y$ and $X$, more than
 mentioned in this paper (e.g. ordinal regression, censored regression).  \\

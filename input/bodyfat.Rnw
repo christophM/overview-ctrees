@@ -13,7 +13,7 @@ influence function $h$ and the transformation function $g_j, \quad j = 1, \dots,
 the variables will not be transformed at all.  \\
 Thus: 
 \[h = \mathbf{Y}_i \quad \text{and} \quad g_j = \mathbf{X}_j \quad j = 1, \dots, m\]
-This yields following not-standardized test statistic:\sidenote{The formulation $\sum\nolimits_{i \in node}$ means sum over all observations in the node (= partition). This is the same as the sum over all observations with additional weights, because only observations in the current node have weigth $w = 1$, the others have weights $w = 0$} 
+This yields following not-standardized test statistic:\sidenote{The formulation $\sum\nolimits_{i \in node}$ means sum over all observations in the node (= partition). This is the same as the sum over all observations with additional weights, because only observations in the current node have weight $w = 1$, the others have weights $w = 0$} 
 
 \[\mathbf{T}_{j}(\mathcal{L}_n, \mathbf{w}) = \sum\limits_{i=1}^n w_i \mathbf{X}_{ji} \mathbf{Y}_i  = \sum\limits_{i \in node} \mathbf{X}_{ji} \mathbf{Y}_i\]
 The next step is to standardize the test statistic:\sidenote{Definitions of $\mu$ and $\Sigma$ can be found on page \pageref{chap:strasser}}
@@ -37,20 +37,20 @@ Therefore:
     \left(\sum\limits_{i \in node}(Y_i - \bar{Y}_{node})^2\right)\left(\sum\limits_{i \in node} (X_{ji} - \bar{X}_{j, node})^2\right)}} \right|\]
   
 
-The linear test statistic is proportional to the pearson correlation coefficient. This means, that the permutation test is testing
+The linear test statistic is proportional to Pearson's correlation coefficient. This means, that the permutation test is testing
 if the correlation between $Y$ and any $X_j$ is different than zero. Thus by choosing the identity function for $h$ and $g_j$ the null 
 hypothesis of independence between $Y$ and $X_j$ is formulated as ``The correlation between $Y$ and $X_j$ is zero''.  \\ 
-The next step is to calculate the test statistic (the pearson correlation coefficient multiplied with a constant) for the 
+The next step is to calculate the test statistic (the Pearson's correlation coefficient multiplied with a constant) for the 
 observation in the current partition (where $w \neq 0$). 
-The response of the observations will be permutated and the test statistic calculated again. This will be done often enough to 
+The response of the observations will be permuted and the test statistic calculated again. This will be done often enough to 
 approximate the distribution of the test statistic for the sample. If the correlation coefficient of the original data is 
-very extreme compared to the permutated test statistics, the p-value will be very low. \\
+very extreme compared to the permuted test statistics, the p-value will be very low. \\
 The procedure of calculating the test statistic for the original data and the permutations is done for every 
-covariate $X_j, \quad j \in 1, \dots, m$ seperatly. \\ 
+covariate $X_j, \quad j \in 1, \dots, m$ separately. \\ 
 
 
 \subsection*{Test statistic for splitting criteria}
-For regression and the identitiy function for the influence function $h$, the statistic used to find the best split is the following:
+For regression and the identity function for the influence function $h$, the statistic used to find the best split is the following:
 \sidenote{
 \(n_A\): Number of observations in partition $A$ \\
 \(\bar{Y}_A\): Mean of $Y$ in $A$  
@@ -66,7 +66,7 @@ For regression and the identitiy function for the influence function $h$, the st
 
 with
 \[Z \sim B(n_{node}, \pi = \frac{n_A}{n_{node}})\]
-Can be interpretated as the probability that z observations would be assigned to $A$ if the process of assigning would be random with probability $\frac{n_A}{n_{node}}$. 
+Can be interpreted as the probability that z observations would be assigned to $A$ if the process of assigning would be random with probability $\frac{n_A}{n_{node}}$. 
 %% Is maximal for \(n_A = \frac{n_{node}}{2}\). 
 %% The closer \(\frac{n_A}{n_{node}}\) to 0.5 the bigger is $c$ (assuming $Y_A$ stays the same).
 Thus the standardized test statistic is: 
@@ -84,7 +84,7 @@ data(bodyfat, package = "mboost")
 @ 
 
 The conditional tree algorithm is implemented in the party package (\citet{hothorn2006unbiased}), which is available on \url{http://cran.r-project.org/}.
-The usage is similiar to the \lstinline{lm()}-function, with the formula interface. 
+The usage is similar to the \lstinline{lm()}-function, with the formula interface. 
 The formula \lstinline{DEXfat ~ . } means that the tree should model the response DEXfat (bodyfat measurement) 
 depending on all available covariates. 
 <<bodyfat-plot-ctree, out.width = "12cm", out.extra = "trim = 3cm 0cm 0cm 1cm", fig.width = 14, fig.height = 8, cache = FALSE, fig.cap = "Conditional tree for bodyfat data", message = FALSE>>=

@@ -1,4 +1,4 @@
-All decisions in steps 1.) and 2.) of the algorithm are embeded in hypothesis tests. These are done with permutation tests (conditional inference).
+All decisions in steps 1.) and 2.) of the algorithm are embedded in hypothesis tests. These are done with permutation tests (conditional inference).
 Also step 3.) makes use of the following test statistic, although nothing is tested. 
 The test statistic from \citet[page 4]{hothorn2006unbiased}:
 \sidenote{This test statistic might look difficult in the first place, because it is a very general formulation. When looking at particular examples the formula becomes very friendly and seems more natural. This can be seen in the two included examples for regression \pageref{chap:regression} and classification \pageref{chap:classification} }

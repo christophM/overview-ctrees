@@ -8,7 +8,7 @@
 %%   twoside, 
 %%   a4paper,
 %%   openright]{scrbook}
-
+\pagenumbering{roman}
 \input{input/prelude.tex}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -21,6 +21,9 @@ opts <- knit$set(stop_on_error=2L)
 % ---------------------------------------------------------------
 \frontmatter 
 \include{input/title} 
+\emptypage
+\include{input/abstract}
+\emptypage
 \begin{normalsize}
 \tableofcontents 
 \end{normalsize}
@@ -31,6 +34,7 @@ opts <- knit$set(stop_on_error=2L)
 
 
 
+\pagenumbering{arabic}
 
 \chapter{Recursive partitioning}
 <<introduction, child = "introduction.Rnw">>=
