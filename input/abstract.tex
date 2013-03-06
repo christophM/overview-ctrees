@@ -1,46 +1,19 @@
-Recursive partitioning is one tool of dat analysis. 
-Due to the resulting tree like structure of the partitioned covariate space the 
-models are easy to interpret. Many of those algorithms suffer from a biased 
-variable selection, meaning that variable with more possible values are selected
-more frequently.
-This paper presents the work of \citet{hothorn2006unbiased}, who present an 
-partitioning algorithm which has an unbiased variable selection. 
-
-% hypothesis
-% permutation
-% two exs from paper, but with focus on test statistics 
-
-
-
-
-
-
-
-Regressions- und Klassifizierungsbäume (CART) ist ein wichtiges
-Werkzeug bei der Datenanalyse. Aufgrund der intuitiven Struktur der
-Aufteilung des Variablenraumes und der damit verbundenen guten
-Interpretierbarkeit erfreuen sie sich einer gewissen Beliebtheit.
-Klassische CART's leiden jedoch unter zwei Problemen: Zum einen neigen
-sie zur Überanpassung an die Daten. Zum anderen ist die
-Variablenselektion verzerrt zu gunsten von Variablen mit vielen
-Splitmöglichkeiten.  Das Problem der Überanpassung lässt sich sich
-Lösen, indem Entscheidungsbäume beschnitten werden (Pruning), oder gar
-nicht erst voll entwickelt werden, sondern mit Hilfe eines
-Stop-Kriteriums nicht weiter wachsen.
-
-Diese Arbeit stellt ein Framework vor, bei dem jeder Split-Schritt
-des Algorithmuses für das Wachsen des Entscheidungsbaumes durch
-statistische Hypothesentests geprüft wird, durch welche Variable der Split
-erfolgen soll und wann der Baum nicht mehr weiter wächst. Die
-Hypothesentests sind eingebettet in die Theorie der
-Permutationstests mit bedingter Inferenz. Die Testentscheidung wird bedingt auf die
-Verteilung aller Permutationen der jeweiligen Teststatistik. 
-
-Der in dieser Arbeit vorgestellte Ansatz soll beide genannten Probleme
-lösen: Die Überanpassung an die Daten wird verhindert durch multiples
-Testen der globalen Nullhypothese, ob noch eine weiter Splitvariable
-verwendet werden soll, oder abgebrochen werden soll. 
-Die Verzerrung in der Variablenselektion wird vermieden durch ein
-Vergleichen der Variablen auf p-Wert Ebene. 
-
-Die bedingten Regressionsbäume werden an Beispielen demonstriert. 
+\vspace*{4cm}
+\begin{fullwidth}
+\begin{center}
+\huge{Abstract}
+\end{center}
+\thispagestyle{empty}
+Recursive partitioning is one tool for data analysis in a statistician's modeling toolbox. 
+Due to the resulting tree structure of the partitioned covariate space, the 
+models are easy to interpret. Many of the existing partitioning algorithms suffer from a biased 
+variable selection, meaning that variables with more possible values are selected
+more frequently. \\
+This paper presents the work of \citet{hothorn2006unbiased}, who proposed and implemented an 
+partitioning algorithm, which has an unbiased variable selection: conditional inference trees. 
+All decisions are formulated as statistical hypotheses and tested with permutation tests. The 
+proposed framework covers not only numeric and nominal regression, but arbitrary measurement
+scales of response and covariates, like ordinal or censored regression. 
+This papers regards the algorithm in detail and illustrates it with two examples. 
+Special emphasis is on the used test statistics. 
+\end{fullwidth}
