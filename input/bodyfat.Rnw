@@ -28,7 +28,7 @@ The next step is to standardize the test statistic:\sidenote{Definitions of $\mu
         & = \frac{1}{n_{node}} \sum\limits_{i \in node} (Y_i - \bar{Y}_{node})^2 \sum\limits_{i=1}^n X_{ji}^2 \\
  & - \frac{1}{n_{node} - 1} \cdot \frac{1}{n_{node}} \sum\limits_{i \in node} (Y_i - \bar{Y}_{node})^2 n_{node}^2 \bar{X}_{j, node}^2 \\
         & = \frac{1}{n_{node} - 1} \sum\limits_{i \in node}\left(Y_i - \bar{Y}_{node}\right)^2 \left(\sum\limits_{i \in node} X_{ji}^2 - n_{node} \bar{X}_{j, node}^2\right)  \\
-        & = \frac{1}{n_{node} - 1} \left(\sum\limits_{i \in node} (Y_i - \bar{Y}_{node})^2\right) \left( \sum\limits_{i \in node} (X_{ji} - \bar{X})^2\right)   
+        & = \frac{1}{n_{node} - 1} \left(\sum\limits_{i \in node} (Y_i - \bar{Y}_{node})^2\right) \left( \sum\limits_{i \in node} (X_{ji} - \bar{X}_{j, node})^2\right)   
 \end{align*}
 Therefore: 
 \[c
