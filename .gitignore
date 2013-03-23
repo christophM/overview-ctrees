@@ -6,6 +6,9 @@
 *.tex
 *.out
 ./input/*.tex
+*.blg
+*.bbl
+
 
 # ignore figure folder
 figure/
