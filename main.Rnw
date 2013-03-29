@@ -1,13 +1,5 @@
 \documentclass{tufte-book}
-%% \documentclass[
-%%   bibliography=totoc,
-%%   listof=totoc,BCOR5mm,
-%%   DIV12, 
-%%   headsepline, 
-%%   headings=openany, 
-%%   twoside, 
-%%   a4paper,
-%%   openright]{scrbook}
+
 \pagenumbering{roman}
 \input{input/prelude.tex}
 
