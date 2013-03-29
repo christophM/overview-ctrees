@@ -14,10 +14,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
 
-<<mysetup, include = FALSE>>=
-opts_knit$set(child.path = "./input/")
-opts_knit$set(stop_on_error=2L)
-@
+
 % ---------------------------------------------------------------
 \frontmatter 
 \include{input/title} 
@@ -37,56 +34,57 @@ opts_knit$set(stop_on_error=2L)
 \pagenumbering{arabic}
 
 \chapter{Recursive partitioning}
-<<introduction, child = "introduction.Rnw">>=
+<<introduction, child = "input/introduction.Rnw">>=
 @ 
+
 \chapter{Motivation}
-<<problems, child = "motivation.Rnw">>= 
+<<problems, child = "input/motivation.Rnw">>= 
 @ 
 \chapter{Recursive partitioning by conditional inference}
-<<ctrees, child = "ctrees.Rnw">>=
+<<ctrees, child = "input/ctrees.Rnw">>=
 @ 
 
 \chapter*{Algorithm}
-<<algorithm, child = "algorithm.Rnw">>=
+<<algorithm, child = "input/algorithm.Rnw">>=
 @ 
 \section{The test statistic}
-<<test_statistic, child = "test-statistic.Rnw">>=
+<<test_statistic, child = "input/test-statistic.Rnw">>=
 @ 
 \section{Stop criteria and variable selection}
-<<stop_criterion, child = "stop_criterion.Rnw">>=
+<<stop_criterion, child = "input/stop_criterion.Rnw">>=
 @ 
 \section{Splitting criteria}
-<<best-split, child = "best-split.Rnw">>=
+<<best-split, child = "input/best-split.Rnw">>=
 @ 
 \section{Repeat}
-<<repeat4, child = "repeat.Rnw">>=
+<<repeat4, child = "input/repeat.Rnw">>=
 @ 
 
 \chapter{Regression example: bodyfat}
 \label{chap:regression}
-<<bodyfat, child = "bodyfat.Rnw">>=
+<<bodyfat, child = "input/bodyfat.Rnw">>=
 @ 
 
 
 \chapter{Classification example: glaucoma}
 \label{chap:classification}
-<<glaucoma, child = "glaucoma.Rnw">>=
+<<glaucoma, child = "input/glaucoma.Rnw">>=
 @ 
 
 
 %% \chapter{Other scales}
 
 \chapter{Summary}
-<<summary, child = "summary.Rnw">>=
+<<summary, child = "input/summary.Rnw">>=
 @ 
 \begin{appendix}
   \chapter{appendix: Permutation tests}
   \label{chap:perm}
-  <<appendix-permutation-tests, child = "appendix-permutation-test.Rnw">>=
+  <<appendix-permutation-tests, child = "input/appendix-permutation-test.Rnw">>=
   @
   \chapter{appendix: Test statistic}
   \label{chap:strasser}
-  <<strasser_weber, child = "strasser-weber.Rnw">>=
+  <<strasser_weber, child = "input/strasser-weber.Rnw">>=
   @
 \end{appendix}
 
